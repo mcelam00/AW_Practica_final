@@ -1,20 +1,17 @@
 <template>
   <v-app app>
-
     <navbar />
 
-    <v-main>
+    <v-content class="mx-2 mb-4 pt-0">
       <router-view></router-view>
-    </v-main>
+    </v-content>
   </v-app>
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue';
+import Navbar from "./components/Navbar.vue";
 export default {
-  components: { Navbar},
+  components: { Navbar },
   name: "App",
-
-  
 };
 </script>

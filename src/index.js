@@ -12,8 +12,11 @@ mongoose.connect('mongodb://localhost/baseDatos')
     .catch(err => console.error(err)); //si sucede un problema en la conexión que lo muestre tambien
 
 
+
+
 /*CONFIGURACIONES*/
 app.set('port', process.env.PORT || 5000); //se usará el puerto que proporcione el servicio cloud/S.O./máquina servidor y sino el 8080
+
 
 
 
@@ -22,7 +25,9 @@ app.use(express.json()); //para procesamiento de json
 
 
 
-/*ENRUTAMIENTOS*/
+/*ENRUTAMIENTOS: Vamos a tartarlas en un fichero a parte para no saturar*/
+//llamamos al archivo de rutas en router
+app.use(require('./router/enrutamientos'));
 
 
 

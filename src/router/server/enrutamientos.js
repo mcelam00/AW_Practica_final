@@ -1,12 +1,12 @@
 //requerimos express para poder definir las rutas 
 const express = require('express');
-const { base } = require('../models/EsquemaBD');
+const { base } = require('../../models/EsquemaBD');
 
 //objeto que tendrá todas las rutas y podremos llamarlo desde cualquier parte
 const router = express.Router();
 
 //Importamos los modelos de la base de datos definidos
-const baseDatos = require('../models/EsquemaBD');
+const baseDatos = require('../../models/EsquemaBD');
 
 
 

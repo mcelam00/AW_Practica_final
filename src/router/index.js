@@ -3,7 +3,9 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Principal from '../views/Principal.vue'
 import MiPerfil from '../views/MiPerfil.vue'
+import Login from '../views/Login.vue'
 import ConseguirPuntos from '../views/ConseguirPuntos.vue'
+import ComprarAlbumYCartas from '../views/ComprarAlbumYCartas.vue'
 
 Vue.use(VueRouter)
 
@@ -34,6 +36,13 @@ const routes = [{
 
         component: () =>
             import ('../views/Login.vue')
+    },
+    {
+        path: '/ComprarAlbumYCartas',
+        name: 'ComprarAlbumYCartas',
+
+        component: () =>
+            import ('../views/ComprarAlbumYCartas.vue')
     },
 ]
 

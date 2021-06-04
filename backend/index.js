@@ -2,6 +2,7 @@
 const express = require('express');
 //Biblioteca de conexion a mongodb y trabajar con los datos
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 //Inicializamos express y ejecutamos el framework. App es de ahora en adelante el servidor
 const app = express();
@@ -22,7 +23,7 @@ app.set('port', process.env.PORT || 5000); //se usará el puerto que proporcione
 
 /*MIDDLEWARE*/
 app.use(express.json()); //para procesamiento de json
-
+app.use(cors());
 
 
 /*ENRUTAMIENTOS: Vamos a tartarlas en un fichero a parte para no saturar*/

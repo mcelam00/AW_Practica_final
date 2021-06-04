@@ -1,6 +1,5 @@
-
 <template>
-  <v-container grid-list-xs>
+     <v-container grid-list-xs>
     <v-row>
       <v-col v-for="album in albumes" :key="album.nombre" cols="4">
         <v-card class="mx-auto" max-width="344">
@@ -11,7 +10,7 @@
           <v-card-subtitle> 1,000 millones de pesetas </v-card-subtitle>
 
           <v-card-actions>
-            <v-btn color="orange" text route to = "/ComprarAlbumYCartas"> comprar </v-btn>
+            <v-btn color="orange" text @click="login"> comprar </v-btn>
 
             <v-spacer></v-spacer>
 
@@ -26,15 +25,17 @@
 </template>
 
 
-<!--  -->
+
+
 
 <script>
-export default {
-  name: "Principal",
 
-  data: () => ({
-    show: false,
-    albumes: [
+export default {
+  name: "ComprarAlbumYCartas",
+  
+   data: () => ({
+
+       albumes: [
       {
         nombre: "Album Pokémon tipo Agua",
         link:
@@ -51,6 +52,27 @@ export default {
           "https://images-na.ssl-images-amazon.com/images/I/91MJcZ2oZ3L._AC_SL1500_.jpg",
       },
     ],
-  }),
+
+
+   }),
+
+  methods: {
+    login: function() {
+            var xhttp = new XMLHttpRequest();
+            var url = 'http://localhost:5000/BaseDatos';
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+              console.log(this.responseText);
+          }
+        };
+        xhttp.open('GET', url, true);
+        xhttp.send();
+    },
+  },
+
+  components: {},
+
+
 };
+
 </script>

@@ -28,7 +28,7 @@ app.use(express.json()); //para procesamiento de json
 /*ENRUTAMIENTOS: Vamos a tartarlas en un fichero a parte para no saturar*/
 //llamamos al archivo de rutas en router
 //Cualquier ruta que venga dirigida a /server/enrutamientos se redirige a 
-app.use('/baseDatos', require('./router/server/enrutamientos'));
+app.use('/baseDatos', require('./routes/enrutamientos'));
 
 
 

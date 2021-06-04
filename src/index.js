@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 //Inicializamos express y ejecutamos el framework. App es de ahora en adelante el servidor
 const app = express();
 
-//Inicializamos mongoose
+//Inicializamos mongoose y abrimos conexion con la base de datos
 mongoose.connect('mongodb://localhost/baseDatos')
     .then(db => console.log('Base de datos conectada')) //para que cuando se conecte lo diga
     .catch(err => console.error(err)); //si sucede un problema en la conexión que lo muestre tambien

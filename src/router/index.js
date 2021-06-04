@@ -7,29 +7,38 @@ import ConseguirPuntos from '../views/ConseguirPuntos.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    name: 'Principal',
-     
-    component: () => import('../views/Principal.vue')
-  },
-  {
-    path: '/MiPerfil',
-    name: 'MiPerfil',
-    
-    component: () => import('../views/MiPerfil.vue')
-  },
-  {
-    path: '/ConseguirPuntos',
-    name: 'ConseguirPuntos',
-    
-    component: () => import('../views/ConseguirPuntos.vue')
-  },
+const routes = [{
+        path: '/',
+        name: 'Principal',
+
+        component: () =>
+            import ('../views/Principal.vue')
+    },
+    {
+        path: '/MiPerfil',
+        name: 'MiPerfil',
+
+        component: () =>
+            import ('../views/MiPerfil.vue')
+    },
+    {
+        path: '/ConseguirPuntos',
+        name: 'ConseguirPuntos',
+
+        component: () =>
+            import ('../views/ConseguirPuntos.vue')
+    },
+    {
+        path: '/Login',
+        name: 'Login',
+
+        component: () =>
+            import ('../views/Login.vue')
+    },
 ]
 
 const router = new VueRouter({
-  routes
+    routes
 })
 
 export default router

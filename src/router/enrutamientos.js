@@ -1,5 +1,6 @@
 //requerimos express para poder definir las rutas 
 const express = require('express');
+const { base } = require('../models/EsquemaBD');
 
 //objeto que tendrá todas las rutas y podremos llamarlo desde cualquier parte
 const router = express.Router();
@@ -53,12 +54,19 @@ router.put('/:id', async (request, response) =>{
     await baseDatos.findByIdAndUpdate(request.params.id, request.body);
 
     //console.log(request.params);
-    response.send('Recibido y actualizado a base de datos, gracias :)');
+    response.send('Recibido y actualizado a base de datos');
 
 
 });
 
+router.delete('/:id', async (request, response) =>{
 
+    //con el id que nos llegue, se lo pasamos a la funcion, busca por ID en la base de datos y lo elimina
+    await baseDatos.findByIdAndRemove(request.params.id);
+
+    response.send('Recibido y borrado en la base de datos');
+
+});
 
 
 

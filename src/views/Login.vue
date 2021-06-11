@@ -72,7 +72,7 @@
 </template>
                 
                 <v-spacer></v-spacer>
-                <v-btn color="success" :to="{ path: '/' }" >Login</v-btn>
+                <v-btn color="success" @click="mandarDatos()"  >Login</v-btn> <!--:to="{ path: '/' }"-->
               </v-card-actions>
             </v-card>
           </v-col>
@@ -102,6 +102,45 @@ export default {
     login: function() {
       console.log("loggeado");
     },
+
+    mandarDatos: function(){
+      console.log("gracias al v-model");
+      console.log("Nombre =", this.name);
+      console.log("Palabra de paso = ", this.password);
+
+        //peticion post que comprueba el loggueo
+        var xhttp = new XMLHttpRequest();
+        var url = 'http://localhost:5000/baseDatos/login';
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+              console.log(this.responseText);
+          }
+        };
+
+        xhttp.open('POST', url, true);
+            xhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
+        xhttp.setRequestHeader('Content-type','application/json; charset=utf-8');
+        xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+
+
+
+
+        xhttp.send(JSON.stringify({ "name": "Olmedo", "email": "Diez" }));
+
+
+
+
+
+
+
+
+
+
+
+      
+
+    }
+
   },
   components: {},
 };

@@ -8,7 +8,7 @@ const cors = require('cors');
 const app = express();
 
 //Inicializamos mongoose y abrimos conexion con la base de datos
-mongoose.connect('mongodb://localhost/baseDatos')
+mongoose.connect('mongodb://localhost/AW_Coleccion_Cromos')
     .then(db => console.log('Base de datos conectada')) //para que cuando se conecte lo diga
     .catch(err => console.error(err)); //si sucede un problema en la conexión que lo muestre tambien
 

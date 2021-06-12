@@ -71,7 +71,7 @@
 import store from "../store";
 export default {
   data: () => ({
-    drawer: null,
+    drawer: false,
     //isLogueado: $store.state.logueado,
     items: [
       { text: "Colecciones", icon: "mdi-cards", ruta: "/" },

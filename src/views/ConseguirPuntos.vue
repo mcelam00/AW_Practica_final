@@ -124,6 +124,7 @@
   </v-card>
 
 <v-card
+
     class="mx-auto"
     max-width="800"
   >

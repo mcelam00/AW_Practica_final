@@ -200,15 +200,12 @@
 export default {
   name: "ConseguirPuntos",
 
-data: () => ({
-    pregunta: "",
-    picoBoton:false,
-    contestacion: ""
-  }),
-
   data() {
     return {
-      solucion1 : "si"
+      solucion1 : "si",
+       pregunta: "",
+    picoBoton:false,
+    contestacion: ""
     };
   },
   

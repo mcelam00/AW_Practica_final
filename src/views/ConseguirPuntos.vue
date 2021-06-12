@@ -153,9 +153,11 @@
       ¡Comencemos!
     </v-btn>
 
-        <v-card-subtitle class="title font-weight-light" v-if="picoBoton">
-            {{pregunta}} 
+        <v-card-subtitle  class="title font-weight-light" v-if="picoBoton" id="pregunta"> 
         </v-card-subtitle>
+
+     
+
                   <v-btn
                           right
                           absolute
@@ -168,7 +170,7 @@
                   Enviar
                 </v-btn>
                 
-              <v-text-field style="width:400px" class="mx-4"
+              <v-text-field style="width:400px" class="mx-4" 
                 v-model="contestacion"
                 solo
                 label="Respuesta"
@@ -203,7 +205,6 @@ export default {
   data() {
     return {
       solucion1 : "si",
-       pregunta: "",
     picoBoton:false,
     contestacion: ""
     };
@@ -222,10 +223,9 @@ export default {
             var url = 'http://localhost:5000/Preguntas';
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
+
               let objetoPregunta = JSON.parse(this.responseText);
-              console.log(objetoPregunta.enunciado)
-              this.pregunta = objetoPregunta.enunciado;
-            
+              document.getElementById("pregunta").innerHTML = objetoPregunta.enunciado;
 
           }
         };

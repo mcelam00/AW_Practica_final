@@ -1,0 +1,314 @@
+{
+
+    "Pregunta1" : {
+
+            "enunciado": "Flor del Rosal",
+            "solucion": "ROSA"
+    },
+
+    "Pregunta2" : {
+
+        "enunciado": "Perteneciente o relativo al rey o a la realeza",
+        "solucion": "REAL"
+    },
+
+    "Pregunta3" : {
+
+        "enunciado": "Esencia, punto más importante o porqué de una cosa",
+        "solucion": "QUID"
+    },
+
+    "Pregunta4" : {
+
+        "enunciado": "Árbol americano del que hay varias especies, pertenecientes a la familia de las Rubiáceas",
+        "solucion": "QUINO"
+    },
+
+    "Pregunta5" : {
+
+        "enunciado": "Unidad de potencia equivalente a 1000 vatios",
+        "solucion": "KILOVATIO"
+    },
+
+    "Pregunta6" : {
+
+        "enunciado": "Licor alcohólico que se hace del zumo de las uvas exprimido",
+        "solucion": "VINO"
+    },
+
+    "Pregunta7" : {
+
+        "enunciado": "Gentilicio de la Habana, capital de Cuba",
+        "solucion": "HABANERO"
+    },
+
+    "Pregunta8" : {
+
+        "enunciado": "Gorra cilíndrica o ligeramente cónica, con visera horizontal",
+        "solucion": "KEPIS"
+    },
+
+    "Pregunta9" : {
+
+        "enunciado": "Canto monótono",
+        "solucion": "MELOPEA"
+    },
+
+    "Pregunta10" : {
+
+        "enunciado": "Embarcación de gala o de recreo, lujosa y grande",
+        "solucion": "YATE"
+    },
+
+    "Pregunta11" : {
+
+        "enunciado": "Planta bienal de la familia de las Cricíferas, de cuatro a seis decímetros de altura",
+        "solucion": "NABA"
+    },
+
+    "Pregunta12" : {
+
+        "enunciado": "Perteneciente o relativo al río",
+        "solucion": "FLUVIAL"
+    },
+
+    "Pregunta13" : {
+
+        "enunciado": "Máquina para lavar la ropa",
+        "solucion": "LAVADORA"
+    },
+
+    "Pregunta14" : {
+
+        "enunciado": "Sombrero de copa baja, rígida y forma semiésférica",
+        "solucion": "BOMBÍN"
+    },
+
+    "Pregunta15" : {
+
+        "enunciado": "Conjunto o montón de cosas inútiles y ridículas",
+        "solucion": "ÑAQUE"
+    },
+
+    "Pregunta16" : {
+
+        "enunciado": "Arcilla arenos, por lo general de color blanco azulado, usada principalmente para desengrasar los paños, quitar manchas o absorber grasa y en la fabricación de cerámica",
+        "solucion": "GREDA"
+    },
+
+    "Pregunta17" : {
+
+        "enunciado": "Conteniendo la 'X': Se dice de una persona que viene de un país de fuera",
+        "solucion": "EXTRANJERO"
+    },
+
+    "Pregunta18" : {
+
+        "enunciado": "Planta anual propia de terrenos muy húmedos, cuyo fruto es un grano oval rico en almidón",
+        "solucion": "ARROZ"
+    },
+
+    "Pregunta19" : {
+
+        "enunciado": "Malestar o enfermedad producidos por una exposicoón excesiva a los rayos solares",
+        "solucion": "INSOLACIÓN"
+    },
+
+    "Pregunta20" : {
+
+        "enunciado": "Dicho de una cosa: Que en su línea no tiene otra después de sí",
+        "solucion": "ÚLTIMA"
+    },
+
+    "Pregunta21" : {
+
+        "enunciado": "Instrumento para medir volúmenes de gas",
+        "solucion": "GASÓMETRO"
+    },
+
+    "Pregunta22" : {
+
+        "enunciado": "Hacer pasar el agua por caños o conductos",
+        "solucion": "ENCAÑAR"
+    },
+
+    "Pregunta23" : {
+
+        "enunciado": "Juego que se practica en un tablero con cuatro o mas salidas",
+        "solucion": "PARCHÍS"
+    },
+
+    "Pregunta24" : {
+
+        "enunciado": "Dicho de una persona, que huye y se esconde de las gentes",
+        "solucion": "HURAÑO"
+    },
+
+    "Pregunta25" : {
+
+        "enunciado": "Medida de longitud equivalente a 0,914 metros",
+        "solucion": "YARDA"
+    },
+
+    "Pregunta26" : {
+
+        "enunciado": "Pegar con cola algo",
+        "solucion": "ENCOLAR"
+    },
+
+    "Pregunta27" : {
+
+        "enunciado": "Existencia de una persona o de una cosa a la vez que otra u otras",
+        "solucion": "COEXISTENCIA"
+    },
+
+    "Pregunta28" : {
+
+        "enunciado": "Que no se puede explicar",
+        "solucion": "INEXPLICABLE"
+    },
+
+    "Pregunta29" : {
+
+        "enunciado": "Natural de la antigua Ónuba, hoy Huelva",
+        "solucion": "ONUBENSE"
+    },
+
+    "Pregunta30" : {
+
+        "enunciado": "Línea que en su desarrollo forma ángulos alternativos, entrantes y salientes",
+        "solucion": "ZIGZAG"
+    },
+
+    "Pregunta31" : {
+
+        "enunciado": "Pez teleósteo de hasta metro y medio de longitud, de cuerpo rollizo, cabeza apuntada y una aleta adiposa dorsal junto a la cola",
+        "solucion": "SALMON"
+    },
+
+    "Pregunta32" : {
+
+        "enunciado": "Buque grande, de cubierta, con velas y muy fortificado, que se usa paraa el comercio, correos, etc.",
+        "solucion": "NAVÍO"
+    },
+
+    "Pregunta33" : {
+
+        "enunciado": "Instrumento mmusical de percusión formado por láminas de madera o metal ",
+        "solucion": "XILÓFONO"
+    },
+
+    "Pregunta34" : {
+
+        "enunciado": "Onomatopeya que describe el sonido de un gato",
+        "solucion": "MIAU"
+    },
+
+    "Pregunta35" : {
+
+        "enunciado": "Licor alcohólico que se obtiene del grando de algunas plantas, destilando un compuesto amiláceo en estado de fermentación",
+        "solucion": "WHISKY"
+    },
+    
+    "Pregunta36" : {
+
+        "enunciado": "Perteneciente o relativo a un día",
+        "solucion": "DIAL"
+    },
+    
+    "Pregunta37" : {
+
+        "enunciado": "Hombre sencillo o ignorante",
+        "solucion": "BORREGO"
+    },
+
+    "Pregunta38" : {
+
+        "enunciado": "Árbol silvestre de la familia de las Aquifoliáceas, de cuatro a seis metros de altura",
+        "solucion": "ACEBO"
+    },
+
+    "Pregunta39" : {
+
+        "enunciado": "Pasta que resulta de la combinacion de un álcali con los ácidos del aceite u otro cuerpo graso",
+        "solucion": "JABÓN"
+    },
+
+    "Pregunta40" : {
+
+        "enunciado": "Alimento que se fríe y sirve para hacer tortillas",
+        "solucion": "HUEVO"
+    },
+
+    "Pregunta41" : {
+
+        "enunciado": "Planta anual de la familia de las Gramíneas, también denominada 'falso trigo'",
+        "solucion": "CIZAÑA"
+    },
+
+    "Pregunta42" : {
+
+        "enunciado": "Se dice del polígono de ocho ángulos y ocho lados",
+        "solucion": "OCTÓGONO"
+    },
+
+    "Pregunta43" : {
+
+        "enunciado": "Abreviatura de vatio",
+        "solucion": "WATT"
+    },
+
+    "Pregunta44" : {
+
+        "enunciado": "Conteniendo la Z: Acecho y captura de animales",
+        "solucion": "CAZA"
+    },
+
+    "Pregunta45" : {
+
+        "enunciado": "Acción y efecto de trabajar",
+        "solucion": "LABOR"
+    },
+
+    "Pregunta46" : {
+
+        "enunciado": "Que obra según justicia y razón",
+        "solucion": "JUSTO"
+    },
+
+    "Pregunta47" : {
+
+        "enunciado": "Recipiente de metal vidrio u otra materia, por lo común de fomra ciíndriva, que sirve para beber",
+        "solucion": "VASO"
+    },
+
+    "Pregunta48" : {
+
+        "enunciado": "Bastidor con crital que lleva el automóvil en su parte anterior para resguardar a los viajeros del aire cuando el vehículo es encuentra en movimiento",
+        "solucion": "PARABRISAS"
+    },
+
+    "Pregunta49" : {
+
+        "enunciado": "Antílope propio del África del Sur, que se parece a un caballo pequeño con cabeza de toro",
+        "solucion": "ÑU"
+    },
+
+    "Pregunta50" : {
+
+        "enunciado": "De poco vigor o de poca fuerza o resistencia",
+        "solucion": "DÉBIL"
+    },
+
+    "Pregunta51" : {
+
+        "enunciado": "Pasta alimenticia de harina en forma de cuerda delgada",
+        "solucion": "ESPAGUETI"
+    },
+    
+    "Pregunta52" : {
+
+        "enunciado": "Aversión obsesiva a alguien o a algo",
+        "solucion": "FOBIA"
+    }
+}

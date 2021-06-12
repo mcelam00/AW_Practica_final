@@ -32,7 +32,6 @@
         <v-card-subtitle  class="title font-weight-light" v-if="picoBoton" id="pregunta"> 
         </v-card-subtitle>
 
-     
 
                   <v-btn
                           right
@@ -41,12 +40,11 @@
                   outlined
                   color="indigo"
                    v-if="picoBoton"
-@click="traerPregunta()"
+@click="comprobarSolucion()"
                 >
                   Enviar
                 </v-btn>
-
-
+                
                 
               <v-text-field style="width:400px" class="mx-4" 
                 v-model="contestacion"
@@ -55,13 +53,14 @@
                 clearable
                 v-if="picoBoton"
               ></v-text-field>
-    <v-alert type="success">
-      I'm a success alert.
-    </v-alert>
+
+
+
+    <v-alert type="success" id="solucion" v-show="visible"></v-alert>
+    <v-alert id="error" type="error" v-show="visible"></v-alert>
 
   </v-card>
 </template>
-
 
 
 
@@ -71,16 +70,38 @@ export default {
 
   data() {
     return {
+      visible:false,
     picoBoton:false,
     contestacion: ""
     };
   },
   
   methods: {
+    comprobarSolucion: function(){
+
+      if(this.contestacion.toUpperCase() == document.getElementById("solucion").innerHTML){
+        document.getElementById("solucion").style.display = "block";
+      }else{
+        document.getElementById("error").style.display = "block";
+
+      }      
+
+     
+
+    },
+
+    siguientePregunta: function(){
+
+        document.getElementById("solucion").style.display = "none";
+        document.getElementById("error").style.display = "none";
+
+
+
+    },
+
 
     traerPregunta : function(){
     
-      console.log(this.contestacion)
 
 
        var xhttp = new XMLHttpRequest();
@@ -90,7 +111,8 @@ export default {
 
               let objetoPregunta = JSON.parse(this.responseText);
               document.getElementById("pregunta").innerHTML = objetoPregunta.enunciado;
-
+              document.getElementById("solucion").innerHTML = "Respuesta Correcta : " + objetoPregunta.solucion;
+              document.getElementById("error").innerHTML = "Respuesta Correcta : " + objetoPregunta.solucion;
 
 
 

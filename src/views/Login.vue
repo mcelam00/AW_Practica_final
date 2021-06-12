@@ -32,10 +32,11 @@
                 </v-form>
               </v-card-text>
               <v-divider></v-divider>
-<v-alert id="error"
-  type="error"
-v-show="visible"
->El usuario y contraseña no corresponden con ninguno presente en la base de datos</v-alert>
+              
+              <v-alert id="error"
+                type="error"
+              v-show="visible"
+              >El usuario y contraseña no corresponden con ninguno presente en la base de datos</v-alert>
 
 
               <v-card-actions>

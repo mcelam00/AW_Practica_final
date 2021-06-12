@@ -45,6 +45,8 @@
                 >
                   Enviar
                 </v-btn>
+
+
                 
               <v-text-field style="width:400px" class="mx-4" 
                 v-model="contestacion"
@@ -53,7 +55,9 @@
                 clearable
                 v-if="picoBoton"
               ></v-text-field>
-
+    <v-alert type="success">
+      I'm a success alert.
+    </v-alert>
 
   </v-card>
 </template>
@@ -86,6 +90,10 @@ export default {
 
               let objetoPregunta = JSON.parse(this.responseText);
               document.getElementById("pregunta").innerHTML = objetoPregunta.enunciado;
+
+
+
+
 
           }
         };

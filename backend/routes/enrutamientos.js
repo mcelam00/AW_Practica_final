@@ -9,7 +9,7 @@ const router = express.Router();
 
 //Importamos los modelos de la base de datos definidos
 const socios = require('../models/socios');
-
+const colecciones = require('../models/colecciones');
 
 
 
@@ -17,7 +17,7 @@ const socios = require('../models/socios');
 
 
  
-router.get('/:nombreSocio', async (request, response) =>{
+router.get('/users/:nombreSocio', async (request, response) =>{
     
     //find() retorna un puntero a un result set sobre el que se puede iterar, expiran a los 10 mins
     //aqui restrinjo para que sea solo el que quiero
@@ -41,11 +41,31 @@ router.get('/:nombreSocio', async (request, response) =>{
 });
 
 
-router.post('/login', async (request, response) =>{
+router.post('/login', (request, response) =>{
 
     console.log("hola")
     console.log(request.body)
 
+
+});
+
+
+router.post('/registro', async (request, response) =>{
+
+
+    console.log(request.body)
+    const socio = new socios(request.body);
+
+    await socio.save();
+
+
+});
+
+router.get('/Colecciones', async (request, response)=>{
+console.log("frito")
+    const todasColecciones = await colecciones.find();
+    console.log(todasColecciones)
+    response.json(todasColecciones);
 
 });
 
@@ -59,6 +79,23 @@ router.post('/login', async (request, response) =>{
 
 
 
+
+
+/*
+router.post('/Colecciones/meter', async (request, response)=>{
+console.log("METIENDO COLECCION")
+    //creamos una nueva instancia, como en hibernate los objetos que luego van a la base de datos
+    const coleccion = new colecciones(request.body);
+ 
+
+
+    await coleccion.save(); //lo llevamos a la base de datos, y lo hacemos asincronamente porque puede requerir tiempo
+
+    response.send('Recibido y guardado a base de datos, gracias :)');
+
+});
+
+*/
 
 
 

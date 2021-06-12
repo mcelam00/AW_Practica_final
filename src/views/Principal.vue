@@ -6,7 +6,7 @@
         <v-card class="mx-auto" max-width="344">
           <v-img :src="album.link"></v-img>
 
-          <v-card-title> {{ album.nombre }} </v-card-title>
+          <v-card-title id="titulo"> {{ album.nombre }} </v-card-title>
 
           <v-card-subtitle> 1,000 millones de pesetas </v-card-subtitle>
 
@@ -20,7 +20,53 @@
 
           
         </v-card>
+
       </v-col>
+
+    <v-col >
+        <v-card class="mx-auto" max-width="344">
+          <img id="col1" style="width: 344px; "/>
+          <v-card-title id="tituloc1"> </v-card-title>
+
+          <v-card-subtitle> 1,000 millones de pesetas </v-card-subtitle>
+
+          <v-card-actions>
+            <v-btn color="orange" text route to = "/ComprarAlbumYCartas"> comprar </v-btn>
+
+            <v-spacer></v-spacer>
+
+            
+          </v-card-actions>
+
+          
+        </v-card>
+
+      </v-col>
+
+   <v-col >
+        <v-card class="mx-auto" max-width="344">
+          <img id="col2" style="width: 344px; "/>
+          <v-card-title id="tituloc2"> </v-card-title>
+
+          <v-card-subtitle> 1,000 millones de pesetas </v-card-subtitle>
+
+          <v-card-actions>
+            <v-btn color="orange" text route to = "/ComprarAlbumYCartas"> comprar </v-btn>
+
+            <v-spacer></v-spacer>
+
+            
+          </v-card-actions>
+
+          
+        </v-card>
+
+      </v-col>
+
+
+
+
+
     </v-row>
   </v-container>
 </template>
@@ -32,25 +78,40 @@
 export default {
   name: "Principal",
 
-  data: () => ({
-    show: false,
-    albumes: [
-      {
-        nombre: "Album Pokémon tipo Agua",
-        link:
-          "https://images-na.ssl-images-amazon.com/images/I/91sx24Dup3L._AC_SL1500_.jpg",
-      },
-      {
-        nombre: "Album Pokémon tipo Fuego",
-        link:
-          "https://images-na.ssl-images-amazon.com/images/I/81Q7vXrh6LL._AC_SL1500_.jpg",
-      },
-      {
-        nombre: "Album Pokémon tipo Planta",
-        link:
-          "https://images-na.ssl-images-amazon.com/images/I/91MJcZ2oZ3L._AC_SL1500_.jpg",
-      },
-    ],
-  }),
+  mounted() {
+      this.traerColecciones();
+    },
+      data() {
+    return {
+      show: false,
+      albumes: [],
+     
+    };
+  },
+
+   methods: {
+
+    traerColecciones : function(){
+
+        var xhttp = new XMLHttpRequest();
+        var url = 'http://localhost:5000/baseDatos/Colecciones';
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+
+
+           document.getElementById('tituloc1').innerHTML = JSON.parse(this.responseText)[0].nombre;
+           document.getElementById('col1').src= JSON.parse(this.responseText)[0].album.imagen;
+
+          document.getElementById('tituloc2').innerHTML = JSON.parse(this.responseText)[1].nombre;
+          document.getElementById('col2').src= JSON.parse(this.responseText)[1].album.imagen;
+
+
+          }
+        };
+        xhttp.open('GET', url, true);
+        xhttp.send();
+
+    }
+   }
 };
 </script>

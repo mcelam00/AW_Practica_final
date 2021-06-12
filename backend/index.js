@@ -36,6 +36,7 @@ app.use('/baseDatos', require('./routes/enrutamientos'));
 
 
 
+
 app.get('/Preguntas', (request, response)=>{
 
     //Numero aleatorio de 0 a 51 incluidos:
@@ -44,8 +45,8 @@ app.get('/Preguntas', (request, response)=>{
 
     archivoPreguntas = fs.readFileSync('ganarPuntos/preguntas.json');
     preguntas = JSON.parse(archivoPreguntas);
-console.log(preguntas['Pregunta'+indice]);
-response.setHeader('Content-Type', 'application/json');
+    //console.log(preguntas['Pregunta'+indice]);
+    response.setHeader('Content-Type', 'application/json');
     response.end(JSON.stringify(preguntas['Pregunta'+indice]));
 
 

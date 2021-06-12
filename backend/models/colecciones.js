@@ -6,19 +6,28 @@ const{ Schema } = mongoose;
 
 //definicion del esquema de los datos y sus tipos de datos.
 //Le dice a mongoose como son los datos
-const socio = new Schema({
+const coleccion = new Schema({
     nombre: String,
-    apellidos: String,
-    DNI: String,
-    usuario: String,
-    contrasenya: String,
-    saldoPuntos: Number,
-    colecciones: [{type: Schema.ObjectId, ref: 'coleccion'}] 
+    album: 
+        {
+          nombre: String,
+          imagen: String,
+          precio: Number,
+        },
+    cartas: [
+        {
+          nombre: String,
+          imagen: String,
+          precio: Number,
+          quedan: Number,
+        }
+    ],
+
 });
 
 //Para poder usar el esquema en otras partes, necesito exportarlo y tener un modelo
 //para poder insertar, eliminar...
-module.exports = mongoose.model('socio', socio);
+module.exports = mongoose.model('coleccion', coleccion);
 
 
 

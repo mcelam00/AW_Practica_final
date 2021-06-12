@@ -5,9 +5,7 @@
 
       <v-card flat class="mx-16">
         <v-avatar size="120">
-          <v-img
-            src="https://thispersondoesnotexist.com/image"
-          ></v-img>
+          <v-img src="https://thispersondoesnotexist.com/image"></v-img>
         </v-avatar>
 
         <v-card-title> Nombre </v-card-title>
@@ -41,10 +39,26 @@
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>kiosco de pokimons</v-toolbar-title>
-
-      <v-btn fixed right color="primary">
+      <v-toolbar-title> <h2>Kiosco de Pokimons</h2> </v-toolbar-title>
+      <h2>{{ $store.getters.logueado }}</h2>
+      <v-btn
+        v-if="$store.getters.logueado"
+        absolute
+        right
+        color="primary"
+        @click="changeStateLogueado"
+      >
         <span>Sign Out</span>
+        <v-icon right>mdi-exit-to-app</v-icon>
+      </v-btn>
+      <v-btn
+        v-if="!$store.getters.logueado"
+        absolute
+        right
+        color="primary"
+        @click="changeStateLogueado"
+      >
+        <span>Sign In</span>
         <v-icon right>mdi-exit-to-app</v-icon>
       </v-btn>
     </v-app-bar>
@@ -54,9 +68,11 @@
 </template>
 
 <script>
+import store from "../store";
 export default {
   data: () => ({
     drawer: null,
+    //isLogueado: $store.state.logueado,
     items: [
       { text: "Colecciones", icon: "mdi-clock", ruta: "/" },
       //{ text: "Audience", icon: "mdi-account", ruta: "/Principal" },
@@ -67,5 +83,12 @@ export default {
       },
     ],
   }),
+  computed: {},
+  methods: {
+    changeStateLogueado() {
+      console.log("eee");
+      this.$store.dispatch("changeStateLogueadoAction");
+    },
+  },
 };
 </script>

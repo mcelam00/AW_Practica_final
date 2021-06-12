@@ -16,35 +16,24 @@ const colecciones = require('../models/colecciones');
 
 
 
- 
-router.get('/users/:nombreSocio', async (request, response) =>{
-    
-    //find() retorna un puntero a un result set sobre el que se puede iterar, expiran a los 10 mins
-    //aqui restrinjo para que sea solo el que quiero
+
+router.post('/login', async (request, response) =>{
+
+    usr = request.body.user;
+    contr = request.body.password;
     
     const soc = await socios.find(
-        //{ "nombre": request.params.nombreSocio }
-        { nombre: request.params.nombreSocio}
+        {usuario: usr, contrasenya: contr}
     );
 
- 
-    console.log("Nombre:", soc[0].nombre)
-    console.log("Apellidos:", soc[0].apellidos)
-    console.log("DNI:", soc[0].DNI)
-    console.log("Usuario:", soc[0].usuario)
-    console.log("Contraseña:", soc[0].contrasenya)
-    console.log("Correo Electronico:", soc[0].correoElectronico)
-    console.log("Puntos:", soc[0].saldoPuntos)
 
-    response.json(soc[0])
-
-});
-
-
-router.post('/login', (request, response) =>{
-
-    console.log("hola")
-    console.log(request.body)
+    if(soc == ""){
+        //No está en la base de datos
+        response.send("NO");
+    }else{
+        //Si está en la base de datos
+        response.send("SI");
+    }
 
 
 });
@@ -73,13 +62,35 @@ console.log("frito")
 
 
 
+/*
 
 
+ 
+router.get('/users/:nombreSocio', async (request, response) =>{
+    
+    //find() retorna un puntero a un result set sobre el que se puede iterar, expiran a los 10 mins
+    //aqui restrinjo para que sea solo el que quiero
+    
+    const soc = await socios.find(
+        //{ "nombre": request.params.nombreSocio }
+        { nombre: request.params.nombreSocio}
+    );
+
+ 
+    console.log("Nombre:", soc[0].nombre)
+    console.log("Apellidos:", soc[0].apellidos)
+    console.log("DNI:", soc[0].DNI)
+    console.log("Usuario:", soc[0].usuario)
+    console.log("Contraseña:", soc[0].contrasenya)
+    console.log("Correo Electronico:", soc[0].correoElectronico)
+    console.log("Puntos:", soc[0].saldoPuntos)
+
+    response.json(soc[0])
+
+});
 
 
-
-
-
+*/
 
 /*
 router.post('/Colecciones/meter', async (request, response)=>{

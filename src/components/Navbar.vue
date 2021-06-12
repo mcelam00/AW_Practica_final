@@ -47,6 +47,7 @@
         right
         color="primary"
         @click="changeStateLogueado"
+        router :to = "Login"
       >
         <span>Sign Out</span>
         <v-icon right>mdi-exit-to-app</v-icon>

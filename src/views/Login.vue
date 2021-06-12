@@ -32,6 +32,11 @@
                 </v-form>
               </v-card-text>
               <v-divider></v-divider>
+<v-alert id="error"
+  type="error"
+v-show="visible"
+>El usuario y contraseña no corresponden con ninguno presente en la base de datos</v-alert>
+
 
               <v-card-actions>
                 <template>
@@ -53,11 +58,12 @@
                           Recuperar contraseña
                         </v-btn>
 
+
                         <v-btn
                           right
                           absolute
                           color="success"
-                          @click="mandarDatos()"
+                          @click="login();mandarDatos();"
                           >Login</v-btn
                         >
                       </template>
@@ -96,16 +102,20 @@
 <script>
 export default {
   name: "Login",
-  data() {
-    return {
-      showPassword: false,
-      name: "",
-      password: "",
-    };
+  
+  data (){
+    
+    return{
+        visible:false,
+          showPassword: false,
+          name: "",
+          password: "",
+    }
   },
   methods: {
     login: function () {
       console.log("loggeado");
+ 
     },
 
     mandarDatos: function () {
@@ -118,7 +128,13 @@ export default {
       var url = "http://localhost:5000/baseDatos/login";
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          console.log(this.responseText);
+            
+           if(this.responseText == "NO"){
+                document.getElementById("error").style.display = "block";
+           }else{
+              window.location.href = '/#/MiPerfil';
+           }       
+        
         }
       };
 

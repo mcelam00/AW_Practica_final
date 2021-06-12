@@ -43,12 +43,12 @@
                 
               </v-form>
             </v-card-text>
-            <v-divider></v-divider>
 
             <v-card-actions>
+            
               <template>
-                <v-btn
-                        botton
+              
+                <v-btn     
                         color="blue"
                         @click="mandarDatos()"
                         >Registro</v-btn

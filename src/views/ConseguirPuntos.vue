@@ -122,12 +122,12 @@
       </v-btn>
     </v-card-actions>
   </v-card>
-  
-    </v-container><v-footer>
+  <v-footer>
       <v-card-text class=".font-italic font-weight-bold text-center">
         &copy;2021 — <strong>KIOSKO POKIMONS</strong>
       </v-card-text>
     </v-footer>
+    </v-container>
 </template>
 
 

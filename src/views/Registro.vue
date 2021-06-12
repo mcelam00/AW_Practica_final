@@ -7,13 +7,25 @@
             width="600"
             class="mx-auto mt-5"
             justify="center"
-            color="cardAnalisis"
+            color="grey lighten-3"
           >
             <v-card-title>
-              <h1 class="font-weight-medium">Login</h1>
+              <h1 class="font-weight-medium">Registro</h1>
             </v-card-title>
             <v-card-text>
               <v-form>
+              <v-text-field
+                  v-model="nombre"
+                  label="Nombre"
+                  prepend-icon="mdi-account"
+                  type="text"
+                />
+              <v-text-field
+                  v-model="apellidos"
+                  label="Apellidos"
+                  prepend-icon="mdi-account"
+                  type="text"
+                />
                 <v-text-field
                   v-model="name"
                   label="Usuario"
@@ -28,58 +40,19 @@
                   :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                   @click:append="showPassword = !showPassword"
                 />
+                
               </v-form>
             </v-card-text>
-            <v-divider></v-divider>
 
             <v-card-actions>
+            
               <template>
-                <div class="text-center">
-                  <v-menu
-                    v-model="menu"
-                    :close-on-content-click="false"
-                    :nudge-width="200"
-                    offset-x
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-btn
-                        color="recuperarclave"
-                        dark
-                        v-bind="attrs"
-                        v-on="on"
-                        class="text-decoration-underline"
-                      >
-                        Recuperar contraseña
-                      </v-btn>
-
-                      <v-btn
-                        right
-                        absolute
-                        color="success"
+              
+                <v-btn     
+                        color="blue"
                         @click="mandarDatos()"
-                        >Login</v-btn
+                        >Registro</v-btn
                       >
-                    </template>
-
-                    <v-card>
-                      <v-list>
-                        <v-list-item>
-                          <v-list-item-content>
-                            <v-list-item-title
-                              >¿Cómo recuperar contraseña?</v-list-item-title
-                            >
-                            <v-list-item-subtitle
-                              >Para recuperar la contraseña, llama al numero
-                              +666666666
-                            </v-list-item-subtitle>
-                          </v-list-item-content>
-                        </v-list-item>
-                      </v-list>
-
-                      <v-divider></v-divider>
-                    </v-card>
-                  </v-menu>
-                </div>
               </template>
             </v-card-actions>
           </v-card>
@@ -89,7 +62,7 @@
 
     <!--:to="{ path: '/' }"-->
 
-    <v-footer class="toolbarLogin">
+    <v-footer>
       <v-card-text class=".font-italic font-weight-bold text-center">
         &copy;2021 — <strong>KIOSKO POKIMONS</strong>
       </v-card-text>

@@ -1,4 +1,4 @@
- <template>
+<template>
   <v-main>
     <v-navigation-drawer v-model="drawer" app>
       <!--  -->
@@ -71,10 +71,10 @@
 import store from "../store";
 export default {
   data: () => ({
-    drawer: null,
+    drawer: false,
     //isLogueado: $store.state.logueado,
     items: [
-      { text: "Colecciones", icon: "mdi-clock", ruta: "/" },
+      { text: "Colecciones", icon: "mdi-cards", ruta: "/" },
       //{ text: "Audience", icon: "mdi-account", ruta: "/Principal" },
       {
         text: "Conseguir Puntos",

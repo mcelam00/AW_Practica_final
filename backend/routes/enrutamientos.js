@@ -86,6 +86,14 @@ router.get('/Preguntas/:puntosAcumulados', async(request, response) => {
 });
 
 
+
+
+router.get('/Juego1/:puntosAcumulados', async(request, response) => {
+    console.log("entrasdasda")
+    await socios.findOneAndUpdate({ "DNI": usuarioActivo }, { $inc: { "saldoPuntos": request.params.puntosAcumulados } });
+
+});
+//este metodo tiene que estar el ultimo
 router.get('/traerPuntos', async(request, response) => {
 
     console.log(usuarioActivo)
@@ -94,8 +102,6 @@ router.get('/traerPuntos', async(request, response) => {
     response.send(JSON.stringify(soc[0].saldoPuntos))
 
 });
-
-
 
 
 

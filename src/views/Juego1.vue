@@ -1,9 +1,7 @@
 <template>
   <v-container>
     <v-col v-for="(pregunta, i) in this.preguntas" :key="i">
-      <PreguntasJuego1
-        :titulo = "pregunta[0]" 
-        :respuesta = "pregunta[1]">
+      <PreguntasJuego1 :titulo="pregunta[0]" :respuesta="pregunta[1]">
       </PreguntasJuego1>
     </v-col>
 
@@ -28,20 +26,19 @@ export default {
     return {
       colorBoton: [],
       title: [],
-      preguntas: [["1 + 1", "2"], ["32 + 54", "86"], ["12 · 13", "156"], ["34/2", "17"], ["√144", "12"]],
+      preguntas: [
+        ["1 + 1", "2"],
+        ["32 + 54", "86"],
+        ["12 · 13", "156"],
+        ["34/2", "17"],
+        ["√144", "12"],
+      ],
       respuestas: ["2", "86", "156", "17", "12"],
     };
   },
 
   methods: {
-    comprobarSolucion: function(valor, i, colorBoton) {
-      if (valor == this.respuestas[i]) {
-        this.colorBoton[i] = "green";
-        console.log("me cago en dios");
-      } else {
-        this.colorBoton[i] = "red";
-      }
-    },
+    
   },
 };
 </script>

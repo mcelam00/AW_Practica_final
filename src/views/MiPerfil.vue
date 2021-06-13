@@ -51,7 +51,7 @@ export default {
   name: "Principal",
 
   data: () => ({
-    puntos: 42,
+    puntos: 0,
     albumes: [
       {
         nombre: "Album Pokémon tipo Agua",

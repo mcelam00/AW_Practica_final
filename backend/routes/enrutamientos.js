@@ -1,6 +1,8 @@
 //requerimos express para poder definir las rutas 
 const express = require('express');
 const { base } = require('../models/socios');
+//Para leer del sistema de archivos
+const fs = require('fs');
 
 
 
@@ -13,7 +15,7 @@ const colecciones = require('../models/colecciones');
 
 
 
-
+usuarioActivo = ""; //variable de clase que mantiene la sesion del ususario que está conectado
 
 
 
@@ -32,6 +34,9 @@ router.post('/login', async (request, response) =>{
         response.send("NO");
     }else{
         //Si está en la base de datos
+        usuarioActivo = soc[0].DNI
+   
+        console.log(usuarioActivo)
         response.send("SI");
     }
 
@@ -51,7 +56,7 @@ router.post('/registro', async (request, response) =>{
 });
 
 router.get('/Colecciones', async (request, response)=>{
-console.log("frito")
+console.log("frito "+usuarioActivo)
     const todasColecciones = await colecciones.find();
     console.log(todasColecciones)
     response.json(todasColecciones);
@@ -59,6 +64,31 @@ console.log("frito")
 });
 
 
+
+
+router.get('/Preguntas', (request, response)=>{
+
+    //Numero aleatorio de 0 a 51 incluidos:
+    indice = Math.floor(Math.random() * 52);
+    indice = indice+1
+
+    archivoPreguntas = fs.readFileSync('ganarPuntos/preguntas.json');
+    preguntas = JSON.parse(archivoPreguntas);
+    //console.log(preguntas['Pregunta'+indice]);
+    response.setHeader('Content-Type', 'application/json');
+    response.end(JSON.stringify(preguntas['Pregunta'+indice]));
+
+
+});
+
+
+router.get('/Preguntas/:puntosAcumulados', async (request, response)=>{
+
+    await socios.findOneAndUpdate(
+        { "DNI" : usuarioActivo },
+        { $inc: { "saldoPuntos" : request.params.puntosAcumulados} });
+
+});
 
 
 

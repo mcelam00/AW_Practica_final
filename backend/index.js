@@ -4,8 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 //Peticiones cruzadas
 const cors = require('cors');
-//Para leer del sistema de archivos
-const fs = require('fs');
+
 
 //Inicializamos express y ejecutamos el framework. App es de ahora en adelante el servidor
 const app = express();
@@ -37,20 +36,7 @@ app.use('/baseDatos', require('./routes/enrutamientos'));
 
 
 
-app.get('/Preguntas', (request, response)=>{
 
-    //Numero aleatorio de 0 a 51 incluidos:
-    indice = Math.floor(Math.random() * 52);
-    indice = indice+1
-
-    archivoPreguntas = fs.readFileSync('ganarPuntos/preguntas.json');
-    preguntas = JSON.parse(archivoPreguntas);
-    //console.log(preguntas['Pregunta'+indice]);
-    response.setHeader('Content-Type', 'application/json');
-    response.end(JSON.stringify(preguntas['Pregunta'+indice]));
-
-
-})
 
 
 

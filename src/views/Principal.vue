@@ -1,7 +1,5 @@
 <template>
   <v-container grid-list-xs>
-    <div v-if="!this.loaded">cargando...</div>
-    <div v-if="this.loaded">
       <v-row>
         <v-col v-for="album in albumes" :key="album.album.nombre" cols="4">
           <v-card class="mx-auto" max-width="344">
@@ -30,7 +28,6 @@
 
         <!---->
       </v-row>
-    </div>
   </v-container>
 </template>
 
@@ -46,7 +43,6 @@ export default {
   },
   data: () => ({
     overlay: false,
-    loaded: false,
     show: false,
     albumes: null,
   }),

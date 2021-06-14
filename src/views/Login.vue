@@ -156,6 +156,8 @@ export default {
             console.log("cambiado estado logueado desde login");
             self.$router.push({ path: "/MiPerfil" });
           } else if (this.responseText == "ADMIN") {
+            self.$store.dispatch("changeStateLogueadoAction");
+            console.log("cambiado estado logueado desde login");
             window.location.href = "/#/Administracion";
           }
 

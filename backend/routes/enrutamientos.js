@@ -121,7 +121,84 @@ router.get('/traerUsrLoggeado', async(request, response) => {
 });
 
 
+router.post('/Compra/:idCartaComprada', async(request, response) => {
 
+    tieneColeccion = false
+
+
+    await colecciones.findByIdAndUpdate({_id: request.body._id}, request.body);
+    var socio = await socios.find({ DNI: usuarioActivo});
+
+    socioAActualizar = socio[0];
+
+  
+    for(j=0; j<socio[0].colecciones.length; j++){
+
+        if(socio[0].colecciones[j].nombre == request.body.nombre){
+            tieneColeccion = true
+
+
+
+            for(i = 0; i< request.body.cartas.length; i++){
+                //hemos encontrado la carta comprada en la coleccion alctualizada que viene
+             if(request.body.cartas[i]._id == request.params.idCartaComprada){
+
+                carta = request.body.cartas[i]
+                break
+             }
+
+        }
+
+
+        socioAActualizar.colecciones[j].cartas.push(carta)
+
+
+            break
+        }
+    }
+
+    
+    if( tieneColeccion  == false){
+        console.log("NO ESTA")
+        //hay que añadir la coleccion con la carta
+       
+
+        nuevaColeccion = {
+            nombre: "",
+            album: {},
+            cartas: [],
+        }
+
+        for(i = 0; i< request.body.cartas.length; i++){
+                //hemos encontrado la carta comprada en la coleccion alctualizada que viene
+             if(request.body.cartas[i]._id == request.params.idCartaComprada){
+
+                carta = request.body.cartas[i]
+                break
+             }
+
+        }
+        
+        nuevaColeccion.nombre = request.body.nombre;
+        nuevaColeccion.cartas.push(carta);
+     
+       socioAActualizar.colecciones.push(nuevaColeccion);
+
+
+
+    }
+
+
+ //Descontar los puntos
+
+ socioAActualizar.saldoPuntos = socioAActualizar.saldoPuntos - carta.precio
+
+
+ var socio = await socios.findByIdAndUpdate({ _id: socioAActualizar._id}, socioAActualizar);
+
+
+
+});
 
 
 

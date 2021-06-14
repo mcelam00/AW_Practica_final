@@ -31,7 +31,14 @@
           </v-card-subtitle>
 
           <v-card-actions>
-            <v-btn color="orange" text absolute right class="mb-8">
+            <v-btn
+              color="orange"
+              text
+              absolute
+              right
+              class="mb-8"
+              @click="comprar(item)"
+            >
               comprar
             </v-btn>
 
@@ -63,16 +70,42 @@ export default {
   }),
 
   methods: {
-    login: function() {
-      var xhttp = new XMLHttpRequest();
-      var url = "http://localhost:5000/BaseDatos";
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          console.log(this.responseText);
-        }
-      };
-      xhttp.open("GET", url, true);
-      xhttp.send();
+    comprar: function(item) {
+      console.log(item);
+
+      //Descontar puntos al usuario
+
+      //Descontar existencia al kiosco
+      if (item.quedan >= 1) {
+        item.quedan = item.quedan - 1;
+        var xhttp = new XMLHttpRequest();
+        var url = "http://localhost:5000/baseDatos/Compra" +"/"+ item._id;
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+          }
+        };
+
+        xhttp.open("POST", url, true);
+        xhttp.setRequestHeader("Access-Control-Allow-Headers", "*");
+        xhttp.setRequestHeader(
+          "Content-type",
+          "application/json; charset=utf-8"
+        );
+        xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+
+        xhttp.send(JSON.stringify(this.albumYCartas));
+      }
+      else{
+        alert("No quedan cartas, solo maxibon");
+      }
+
+      //this.albumYCartas.cartas.quedan = this.albumYCartas.cartas.quedan -1;
+      //actualizar la base
+
+      //Mandar el nombre de la carta
+
+      //this.$store.dispatch("updateCollectionAction", this.albumYCartas);
     },
   },
 

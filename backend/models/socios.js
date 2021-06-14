@@ -14,7 +14,7 @@ const socio = new Schema({
     contrasenya: String,
     saldoPuntos: Number,
     esAdmin: Boolean,
-    colecciones: [{type: Schema.ObjectId, ref: 'coleccion'}] 
+    colecciones: [] 
 });
 
 //Para poder usar el esquema en otras partes, necesito exportarlo y tener un modelo

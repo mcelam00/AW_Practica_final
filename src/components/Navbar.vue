@@ -9,7 +9,7 @@
             <v-img src="https://thispersondoesnotexist.com/image"></v-img>
           </v-avatar>
 
-          <v-card-title> Nombre </v-card-title>
+          <v-card-title> <!--{{$store.gettes.currentUser.nombre}}--> </v-card-title>
 
           <v-card-subtitle> Apellido</v-card-subtitle>
           <v-btn class="mb-4" color="primary" router to="/MiPerfil">

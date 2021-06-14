@@ -19,8 +19,9 @@ export default new Vuex.Store({
       console.log("current coleccion", state.currentColeccion);
     },
     setCurrentUser(state, data) {
+      console.log(data)
       state.currentUser = data;
-      console.log("Current usuario", state.currentUser);
+      console.log("Current usuario", state.currentUser.nombre);
     },
     /* updateCollection(state, coleccionActualizada){
       state.currentColeccion = coleccionActualizada;

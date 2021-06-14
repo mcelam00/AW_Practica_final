@@ -135,16 +135,12 @@ export default {
       showPassword: false,
       name: "",
       password: "",
-      xhttp: null,
-      xhttp1: null,
-      self: this,
     };
   },
   methods: {
     mandarDatos: function() {
-      var changeState = this.changeStateLogueado();
-      var guardarUsuario = this.guardarCurrentUser();
-      var recogerUsuario = this.recogerUsr();
+      var self = this;
+
       console.log("Nombre =", this.name);
       console.log("Palabra de paso = ", this.password);
 
@@ -156,13 +152,29 @@ export default {
           if (this.responseText == "NO") {
             document.getElementById("error").style.display = "block";
           } else if (this.responseText == "SI") {
-            changeState;
-            //window.location.href = "/#/MiPerfil";
+            self.$store.dispatch("changeStateLogueadoAction");
+            console.log("cambiado estado logueado desde login");
+            self.$router.push({ path: "/MiPerfil" });
           } else if (this.responseText == "ADMIN") {
             window.location.href = "/#/Administracion";
           }
 
-          guardarUsuario(recogerUsuario);
+          //traemos al socio
+          var xhttp1 = new XMLHttpRequest();
+          var url = "http://localhost:5000/baseDatos/traerUsrLoggeado";
+          xhttp1.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              var user = JSON.parse(this.responseText);
+
+              console.log("Current usuario", user);
+
+              self.$store.dispatch("setCurrentUserAction", user);
+              console.log("Guardado current user desde login");
+            }
+          };
+
+          xhttp1.open("GET", url, false);
+          xhttp1.send();
         }
       };
 
@@ -175,33 +187,7 @@ export default {
     },
 
     login: function() {
-      console.log("loggeado");
-    },
-
-    changeStateLogueado: function() {
-      this.$store.dispatch("changeStateLogueadoAction");
-      console.log("cambiado estado logueado desde login");
-      this.$router.push({ path: "/MiPerfil" });
-    },
-    guardarCurrentUser: function(a) {
-      this.$store.dispatch("setCurrentUserAction", a);
-      console.log("Guardado current user desde login");
-    },
-    recogerUsr: function() {
-      //traemos al socio
-      var xhttp1 = new XMLHttpRequest();
-      var url = "http://localhost:5000/baseDatos/traerUsrLoggeado";
-      xhttp1.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          var user = JSON.parse(this.responseText);
-
-          console.log("Current usuario", user);
-          return user;
-        }
-      };
-
-      xhttp1.open("GET", url, false);
-      xhttp1.send();
+      console.log("loggeando");
     },
   },
   components: {},

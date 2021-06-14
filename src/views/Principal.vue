@@ -28,39 +28,7 @@
           </v-card>
         </v-col>
 
-        <!--<v-col>
-        <v-card class="mx-auto" max-width="344">
-          <img id="col1" style="width: 344px" />
-          <v-card-title id="tituloc1"> </v-card-title>
-
-          <v-card-subtitle> 1,000 millones de pesetas </v-card-subtitle>
-
-          <v-card-actions>
-            <v-btn color="orange" text route to="/ComprarAlbumYCartas">
-              comprar
-            </v-btn>
-
-            <v-spacer></v-spacer>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-
-      <v-col>
-        <v-card class="mx-auto" max-width="344">
-          <img id="col2" style="width: 344px" />
-          <v-card-title id="tituloc2"> </v-card-title>
-
-          <v-card-subtitle> 1,000 millones de pesetas </v-card-subtitle>
-
-          <v-card-actions>
-            <v-btn color="orange" text route to="/ComprarAlbumYCartas">
-              comprar
-            </v-btn>
-
-            <v-spacer></v-spacer>
-          </v-card-actions>
-        </v-card>
-      </v-col>-->
+        <!---->
       </v-row>
     </div>
   </v-container>
@@ -74,9 +42,10 @@ export default {
 
   mounted() {
     this.traerColecciones();
-    console.log("Colecciones traidas",this.albumes);
+    console.log("Colecciones traidas", this.albumes);
   },
   data: () => ({
+    overlay: false,
     loaded: false,
     show: false,
     albumes: null,
@@ -132,8 +101,7 @@ export default {
     setCurrentColeccion: function(a) {
       this.$store.dispatch("setCurrentColeccionAction", a);
 
-      this.$router.push({path: "/ComprarAlbumYCartas"});
-      
+      this.$router.push({ path: "/ComprarAlbumYCartas" });
     },
   },
 };

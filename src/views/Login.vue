@@ -47,8 +47,6 @@
                       offset-x
                     >
                       <template v-slot:activator="{ on, attrs }">
-                        
-                        
                         <v-btn
                           color="recuperarclave"
                           dark
@@ -58,10 +56,10 @@
                         >
                           Recuperar contraseña
                         </v-btn>
-                        
+
                         <v-btn
-                        right
-                        absolute
+                          right
+                          absolute
                           color="success"
                           @click="
                             login();
@@ -69,7 +67,6 @@
                           "
                           >Login</v-btn
                         >
-                        
                       </template>
 
                       <v-card>
@@ -95,27 +92,25 @@
               </v-card-actions>
             </v-card>
             <v-spacer class="pt-2"></v-spacer>
-            <v-card width="600"  class="mx-auto ">
-                
-      
-                    <v-card-title style="font-size:20px; padding-top: 15px; padding-left: 10px;">¿Aún no está registrado? ¡¡Adelante!!
-                        <v-btn
-                        right
-                        absolute
-                          color="blue"
-                          class="white--text"
-                         route
-                         to="/Registro"
-                          >Registrarse</v-btn
-                        >
-                    </v-card-title>
-
-      
+            <v-card width="600" class="mx-auto ">
+              <v-card-title
+                style="font-size:20px; padding-top: 15px; padding-left: 10px;"
+                >¿Aún no está registrado?
+                <v-btn
+                  right
+                  absolute
+                  color="blue"
+                  class="white--text"
+                  route
+                  to="/Registro"
+                  >Registrarse</v-btn
+                >
+              </v-card-title>
             </v-card>
-
           </v-col>
-        </v-row> </v-container
-    ></v-main>
+        </v-row>
+      </v-container></v-main
+    >
 
     <!--:to="{ path: '/' }"-->
 
@@ -141,74 +136,67 @@ export default {
       name: "",
       password: "",
       xhttp: null,
-      xhttp1:null,
+      xhttp1: null,
+      self: this,
     };
   },
   methods: {
     mandarDatos: function() {
-      console.log("gracias al v-model");
+      var changeState = this.changeStateLogueado();
+      var guardarUsuario = this.guardarCurrentUser();
       console.log("Nombre =", this.name);
       console.log("Palabra de paso = ", this.password);
 
       //peticion post que comprueba el loggueo
-      this.xhttp = new XMLHttpRequest();
+      var xhttp = new XMLHttpRequest();
       var url = "http://localhost:5000/baseDatos/login";
-      this.xhttp.onreadystatechange = function() {
+      xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-
           if (this.responseText == "NO") {
             document.getElementById("error").style.display = "block";
-          } else if(this.responseText == "SI"){
-            //changeStateLogueado();
-            window.location.href = "/#/MiPerfil";
-          } else if(this.responseText == "ADMIN"){
+          } else if (this.responseText == "SI") {
+            changeState;
+            //window.location.href = "/#/MiPerfil";
+          } else if (this.responseText == "ADMIN") {
             window.location.href = "/#/Administracion";
           }
 
           //traemos al socio
-          this.xhttp1 = new XMLHttpRequest();
+          var xhttp1 = new XMLHttpRequest();
           var url = "http://localhost:5000/baseDatos/traerUsrLoggeado";
-            this.xhttp1.onreadystatechange = function() {
-                  if (this.readyState == 4 && this.status == 200) {
-                          console.log(JSON.parse(this.responseText));
-                    
-                  }
-                };
+          xhttp1.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              var user = JSON.parse(this.responseText);
+              guardarUsuario(user);
+              console.log("Current usuario", user);
+            }
+          };
 
-                this.xhttp1.open("GET", url, false);
-                this.xhttp1.send();
-          
+          xhttp1.open("GET", url, false);
+          xhttp1.send();
         }
       };
 
-      this.xhttp.open("POST", url, true);
-      this.xhttp.setRequestHeader("Access-Control-Allow-Headers", "*");
-      this.xhttp.setRequestHeader(
-        "Content-type",
-        "application/json; charset=utf-8"
-      );
-      this.xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+      xhttp.open("POST", url, true);
+      xhttp.setRequestHeader("Access-Control-Allow-Headers", "*");
+      xhttp.setRequestHeader("Content-type", "application/json; charset=utf-8");
+      xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
 
-      this.xhttp.send(
-        JSON.stringify({ user: this.name, password: this.password })
-      );
+      xhttp.send(JSON.stringify({ user: this.name, password: this.password }));
     },
-
-   
-    
-      
-      
-    
-  
 
     login: function() {
       console.log("loggeado");
     },
 
     changeStateLogueado: function() {
-      console.log("aaaaaaaaaaaaaaaaaaaaaaaaa");
       this.$store.dispatch("changeStateLogueadoAction");
+      console.log("cambiado estado logueado desde login");
       this.$router.push({ path: "/MiPerfil" });
+    },
+    guardarCurrentUser: function(a) {
+      this.$store.dispatch("setCurrentUserAction", a);
+      console.log("Guardado current user desde login");
     },
   },
   components: {},

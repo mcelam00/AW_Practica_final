@@ -68,9 +68,14 @@
       <v-btn
         v-if="$store.getters.logueado"
         color="primary"
-        @click="changeStateLogueado"
+        @click="
+          changeStateLogueado();
+          resetCurrentUser();
+        "
         absolute
         right
+        router
+        to="/"
       >
         <span>Sign Out</span>
         <v-icon right>mdi-exit-to-app</v-icon>
@@ -119,6 +124,10 @@ export default {
     changeStateLogueado() {
       console.log("metodo de navbar");
       this.$store.dispatch("changeStateLogueadoAction");
+    },
+    resetCurrentUser() {
+      console.log("Current user reseteado");
+      this.$store.dispatch("setCurrentUserAction", null);
     },
   },
 };

@@ -144,6 +144,7 @@ export default {
     mandarDatos: function() {
       var changeState = this.changeStateLogueado();
       var guardarUsuario = this.guardarCurrentUser();
+      var recogerUsuario = this.recogerUsr();
       console.log("Nombre =", this.name);
       console.log("Palabra de paso = ", this.password);
 
@@ -161,19 +162,7 @@ export default {
             window.location.href = "/#/Administracion";
           }
 
-          //traemos al socio
-          var xhttp1 = new XMLHttpRequest();
-          var url = "http://localhost:5000/baseDatos/traerUsrLoggeado";
-          xhttp1.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              var user = JSON.parse(this.responseText);
-              guardarUsuario(user);
-              console.log("Current usuario", user);
-            }
-          };
-
-          xhttp1.open("GET", url, false);
-          xhttp1.send();
+          guardarUsuario(recogerUsuario);
         }
       };
 
@@ -197,6 +186,22 @@ export default {
     guardarCurrentUser: function(a) {
       this.$store.dispatch("setCurrentUserAction", a);
       console.log("Guardado current user desde login");
+    },
+    recogerUsr: function() {
+      //traemos al socio
+      var xhttp1 = new XMLHttpRequest();
+      var url = "http://localhost:5000/baseDatos/traerUsrLoggeado";
+      xhttp1.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var user = JSON.parse(this.responseText);
+
+          console.log("Current usuario", user);
+          return user;
+        }
+      };
+
+      xhttp1.open("GET", url, false);
+      xhttp1.send();
     },
   },
   components: {},

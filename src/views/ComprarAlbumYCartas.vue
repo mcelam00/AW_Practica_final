@@ -31,7 +31,9 @@
           </v-card-subtitle>
 
           <v-card-actions>
-            <v-btn color="orange" text absolute right class="mb-8"> comprar </v-btn>
+            <v-btn color="orange" text absolute right class="mb-8">
+              comprar
+            </v-btn>
 
             <v-spacer></v-spacer>
           </v-card-actions>
@@ -52,10 +54,6 @@ export default {
     this.albumYCartas = store.getters.currentColeccion;
     this.album = this.albumYCartas.album;
     this.cartas = this.albumYCartas.cartas;
-    //console.log("desde comprar album", this.album);
-    //console.log("desde comprar cartas", this.cartas);
-    //console.log("desde comprar cartas", store.getters.currentColeccion);
-    //console.log("preloaded",this.albumes);
   },
 
   data: () => ({

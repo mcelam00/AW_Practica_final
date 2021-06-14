@@ -1,5 +1,5 @@
 <template>
-  <v-card max-width="500">
+  <v-card max-width="500" :disabled="disabled">
     <v-card-title> {{ this.titulo }} </v-card-title>
     <v-card-actions>
       <v-text-field v-model="respondido" label="Respuesta"></v-text-field>
@@ -30,14 +30,14 @@ export default {
         this.colorBoton = "green";
         puntos += 1;
         this.enviarPuntos(puntos);
+        this.disabled = true;
       } else {
         this.colorBoton = "red";
       }
     },
     enviarPuntos: function(puntos) {
       var xhttp = new XMLHttpRequest();
-      var url =
-        "http://localhost:5000/baseDatos/Juego1/" + puntos;
+      var url = "http://localhost:5000/baseDatos/Juego1/" + puntos;
 
       xhttp.open("GET", url, true);
       xhttp.send();

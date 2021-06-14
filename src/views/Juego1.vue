@@ -1,15 +1,11 @@
 <template>
   <v-container>
-    <v-col v-for="(pregunta, i) in this.preguntas" :key="i">
-      <PreguntasJuego1 :titulo="pregunta[0]" :respuesta="pregunta[1]">
-      </PreguntasJuego1>
-    </v-col>
-
-    <v-footer>
-      <v-card-text class=".font-italic font-weight-bold text-center">
-        &copy;2021 — <strong>KIOSKO POKIMONS</strong>
-      </v-card-text>
-    </v-footer>
+    <v-row>
+      <v-col v-for="(pregunta, i) in this.preguntas" :key="i" cols="3">
+        <PreguntasJuego1 :titulo="pregunta[0]" :respuesta="pregunta[1]">
+        </PreguntasJuego1>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -32,13 +28,17 @@ export default {
         ["12 · 13", "156"],
         ["34/2", "17"],
         ["√144", "12"],
+        ["√4", "2"],
+        ["15 · 6", "90"],
+        ["3!", "6"],
+        ["2/2", "1"],
+        ["12 · 32", "384"],
+        ["10 · 2 / 4", "5"],
+        ["sen(π/2)", "1"],
       ],
-      respuestas: ["2", "86", "156", "17", "12"],
     };
   },
 
-  methods: {
-    
-  },
+  methods: {},
 };
 </script>

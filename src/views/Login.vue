@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-content>
+    <v-main>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
@@ -32,12 +32,10 @@
                 </v-form>
               </v-card-text>
               <v-divider></v-divider>
-              
-              <v-alert id="error"
-                type="error"
-              v-show="visible"
-              >El usuario y contraseña no corresponden con ninguno presente en la base de datos</v-alert>
 
+              <v-alert id="error" type="error" v-show="visible"
+                >El usuario y contraseña no son correctos</v-alert
+              >
 
               <v-card-actions>
                 <template>
@@ -59,12 +57,14 @@
                           Recuperar contraseña
                         </v-btn>
 
-
                         <v-btn
                           right
                           absolute
                           color="success"
-                          @click="login();mandarDatos();"
+                          @click="
+                            login();
+                            mandarDatos();
+                          "
                           >Login</v-btn
                         >
                       </template>
@@ -87,8 +87,13 @@
                         <v-divider></v-divider>
                       </v-card>
                     </v-menu>
-                  </div> </template></v-card-actions></v-card></v-col></v-row></v-container
-    ></v-content>
+                  </div>
+                </template>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row> </v-container
+    ></v-main>
 
     <!--:to="{ path: '/' }"-->
 
@@ -101,50 +106,64 @@
 </template>
 
 <script>
+import store from "../store";
+
 export default {
   name: "Login",
-  
-  data (){
-    
-    return{
-        visible:false,
-          showPassword: false,
-          name: "",
-          password: "",
-    }
+
+  data() {
+    return {
+      menu: null,
+      visible: false,
+      showPassword: false,
+      name: "",
+      password: "",
+      xhttp: null,
+    };
   },
   methods: {
-    login: function () {
-      console.log("loggeado");
- 
-    },
-
-    mandarDatos: function () {
+    mandarDatos: function() {
       console.log("gracias al v-model");
       console.log("Nombre =", this.name);
       console.log("Palabra de paso = ", this.password);
 
       //peticion post que comprueba el loggueo
-      var xhttp = new XMLHttpRequest();
+      this.xhttp = new XMLHttpRequest();
       var url = "http://localhost:5000/baseDatos/login";
-      xhttp.onreadystatechange = function () {
+      this.xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+          if (this.responseText == "NO") {
+            document.getElementById("error").style.display = "block";
+          } else {
             
-           if(this.responseText == "NO"){
-                document.getElementById("error").style.display = "block";
-           }else{
-              window.location.href = '/#/MiPerfil';
-           }       
-        
+            //changeStateLogueado();
+
+            window.location.href = "/#/MiPerfil";
+          }
         }
       };
 
-      xhttp.open("POST", url, true);
-      xhttp.setRequestHeader("Access-Control-Allow-Headers", "*");
-      xhttp.setRequestHeader("Content-type", "application/json; charset=utf-8");
-      xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+      this.xhttp.open("POST", url, true);
+      this.xhttp.setRequestHeader("Access-Control-Allow-Headers", "*");
+      this.xhttp.setRequestHeader(
+        "Content-type",
+        "application/json; charset=utf-8"
+      );
+      this.xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
 
-      xhttp.send(JSON.stringify({ user: this.name, password: this.password }));
+      this.xhttp.send(
+        JSON.stringify({ user: this.name, password: this.password })
+      );
+    },
+
+    login: function() {
+      console.log("loggeado");
+    },
+
+    changeStateLogueado: function() {
+      console.log("aaaaaaaaaaaaaaaaaaaaaaaaa");
+      this.$store.dispatch("changeStateLogueadoAction");
+      this.$router.push({ path: "/MiPerfil" });
     },
   },
   components: {},

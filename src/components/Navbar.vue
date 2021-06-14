@@ -3,7 +3,7 @@
     <v-navigation-drawer v-model="drawer" app>
       <!--  -->
 
-      <v-card flat class="mx-16">
+      <v-card v-if="$store.getters.logueado" flat class="mx-16">
         <v-avatar size="120">
           <v-img src="https://thispersondoesnotexist.com/image"></v-img>
         </v-avatar>
@@ -43,12 +43,8 @@
       <h2>{{ $store.getters.logueado }}</h2>
       <v-btn
         v-if="$store.getters.logueado"
-        absolute
-        right
         color="primary"
         @click="changeStateLogueado"
-        router
-        :to="Login"
       >
         <span>Sign Out</span>
         <v-icon right>mdi-exit-to-app</v-icon>
@@ -58,7 +54,8 @@
         absolute
         right
         color="primary"
-        @click="changeStateLogueado"
+        router
+        to="/Login"
       >
         <span>Sign In</span>
         <v-icon right>mdi-exit-to-app</v-icon>

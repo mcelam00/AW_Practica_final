@@ -112,7 +112,13 @@ router.post('/Administracion/Anyadir', async (request, response) =>{
 
 });
 
+router.get('/traerUsrLoggeado', async(request, response) => {
 
+    const soc = await socios.find({ DNI: usuarioActivo });
+
+    response.send(JSON.stringify(soc[0]));
+
+});
 
 
 

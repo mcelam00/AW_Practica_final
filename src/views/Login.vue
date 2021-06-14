@@ -141,6 +141,7 @@ export default {
       name: "",
       password: "",
       xhttp: null,
+      xhttp1:null,
     };
   },
   methods: {
@@ -164,6 +165,19 @@ export default {
             window.location.href = "/#/Administracion";
           }
 
+          //traemos al socio
+          this.xhttp1 = new XMLHttpRequest();
+          var url = "http://localhost:5000/baseDatos/traerUsrLoggeado";
+            this.xhttp1.onreadystatechange = function() {
+                  if (this.readyState == 4 && this.status == 200) {
+                          console.log(JSON.parse(this.responseText));
+                    
+                  }
+                };
+
+                this.xhttp1.open("GET", url, false);
+                this.xhttp1.send();
+          
         }
       };
 
@@ -179,6 +193,13 @@ export default {
         JSON.stringify({ user: this.name, password: this.password })
       );
     },
+
+   
+    
+      
+      
+    
+  
 
     login: function() {
       console.log("loggeado");

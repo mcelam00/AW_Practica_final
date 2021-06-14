@@ -30,6 +30,7 @@ export default {
         this.colorBoton = "green";
         puntos += 1;
         this.enviarPuntos(puntos);
+        puntos = 0;
         this.disabled = true;
       } else {
         this.colorBoton = "red";
@@ -39,6 +40,7 @@ export default {
       var xhttp = new XMLHttpRequest();
       var url = "http://localhost:5000/baseDatos/Juego1/" + puntos;
 
+      
       xhttp.open("GET", url, true);
       xhttp.send();
     },

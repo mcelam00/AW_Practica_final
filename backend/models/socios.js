@@ -13,6 +13,7 @@ const socio = new Schema({
     usuario: String,
     contrasenya: String,
     saldoPuntos: Number,
+    esAdmin: Boolean,
     colecciones: [{type: Schema.ObjectId, ref: 'coleccion'}] 
 });
 

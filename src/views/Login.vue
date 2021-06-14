@@ -47,6 +47,8 @@
                       offset-x
                     >
                       <template v-slot:activator="{ on, attrs }">
+                        
+                        
                         <v-btn
                           color="recuperarclave"
                           dark
@@ -56,10 +58,10 @@
                         >
                           Recuperar contraseña
                         </v-btn>
-
+                        
                         <v-btn
-                          right
-                          absolute
+                        right
+                        absolute
                           color="success"
                           @click="
                             login();
@@ -67,6 +69,7 @@
                           "
                           >Login</v-btn
                         >
+                        
                       </template>
 
                       <v-card>
@@ -91,6 +94,25 @@
                 </template>
               </v-card-actions>
             </v-card>
+            <v-spacer class="pt-2"></v-spacer>
+            <v-card width="600"  class="mx-auto ">
+                
+      
+                    <v-card-title style="font-size:20px; padding-top: 15px; padding-left: 10px;">¿Aún no está registrado? ¡¡Adelante!!
+                        <v-btn
+                        right
+                        absolute
+                          color="blue"
+                          class="white--text"
+                         route
+                         to="/Registro"
+                          >Registrarse</v-btn
+                        >
+                    </v-card-title>
+
+      
+            </v-card>
+
           </v-col>
         </v-row> </v-container
     ></v-main>
@@ -132,14 +154,16 @@ export default {
       var url = "http://localhost:5000/baseDatos/login";
       this.xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+
           if (this.responseText == "NO") {
             document.getElementById("error").style.display = "block";
-          } else {
-            
+          } else if(this.responseText == "SI"){
             //changeStateLogueado();
-
             window.location.href = "/#/MiPerfil";
+          } else if(this.responseText == "ADMIN"){
+            window.location.href = "/#/Administracion";
           }
+
         }
       };
 

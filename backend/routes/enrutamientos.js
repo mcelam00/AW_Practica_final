@@ -33,9 +33,12 @@ router.post('/login', async(request, response) => {
     } else {
         //Si está en la base de datos
         usuarioActivo = soc[0].DNI
+        if(soc[0].esAdmin == true){
+            response.send("ADMIN");
 
-        console.log(usuarioActivo)
-        response.send("SI");
+        }else{
+            response.send("SI");
+        }
     }
 
 
@@ -45,7 +48,6 @@ router.post('/login', async(request, response) => {
 router.post('/registro', async(request, response) => {
 
 
-    console.log(request.body)
     const socio = new socios(request.body);
 
     await socio.save();
@@ -55,7 +57,6 @@ router.post('/registro', async(request, response) => {
 
 router.get('/Colecciones', async(request, response) => {
     const todasColecciones = await colecciones.find();
-    console.log(todasColecciones)
     response.json(todasColecciones);
 
 });

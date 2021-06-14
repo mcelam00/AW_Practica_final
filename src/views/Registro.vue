@@ -127,7 +127,7 @@ export default {
       xhttp.setRequestHeader("Content-type", "application/json; charset=utf-8");
       xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
 
-      xhttp.send(JSON.stringify({ usuario: this.name, contrasenya: this.password, nombre: this.nombre, apellidos: this.apellidos, DNI: this.DNI, saldoPuntos: 20 }));
+      xhttp.send(JSON.stringify({ usuario: this.name, contrasenya: this.password, nombre: this.nombre, apellidos: this.apellidos, DNI: this.DNI, saldoPuntos: 20, esAdmin: false, }));
     },
   },
   components: {},

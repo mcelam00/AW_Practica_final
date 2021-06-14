@@ -47,7 +47,8 @@
         right
         color="primary"
         @click="changeStateLogueado"
-        router :to = "Login"
+        router
+        :to="Login"
       >
         <span>Sign Out</span>
         <v-icon right>mdi-exit-to-app</v-icon>
@@ -72,6 +73,7 @@
 import store from "../store";
 export default {
   data: () => ({
+    selectedItem: null,
     drawer: false,
     //isLogueado: $store.state.logueado,
     items: [
@@ -87,7 +89,7 @@ export default {
   computed: {},
   methods: {
     changeStateLogueado() {
-      console.log("eee");
+      console.log("metodo de navbar");
       this.$store.dispatch("changeStateLogueadoAction");
     },
   },

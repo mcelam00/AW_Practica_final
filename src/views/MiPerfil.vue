@@ -1,8 +1,7 @@
-
 <template>
   <v-container fluid class="pa-8">
     <h1>Mi Perfil</h1>
-    <h3 class="pb-2">Saldo de puntos: {{ puntos }}</h3>
+    <h3 class="pb-2" id="puntos"></h3>
     <br />
     <h3>Mis Álbumes:</h3>
 
@@ -49,6 +48,10 @@
 <script>
 export default {
   name: "Principal",
+
+  mounted() {
+      this.cargarPuntos();
+    },
 
   data: () => ({
     puntos: 0,
@@ -135,5 +138,24 @@ export default {
       },
     ],
   }),
+  methods: {
+    cargarPuntos: function(){
+
+        var xhttp = new XMLHttpRequest();
+        var url = 'http://localhost:5000/baseDatos/traerPuntos';
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+
+            document.getElementById("puntos").innerHTML = "Saldo de puntos: " + this.responseText;
+
+
+          }
+        };
+        xhttp.open('GET', url, true);
+        xhttp.send();
+
+
+    }
+  },
 };
 </script>

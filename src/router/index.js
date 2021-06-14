@@ -67,6 +67,13 @@ const routes = [{
         component: () =>
             import ("../views/Juego2.vue"),
     },
+    {
+        path: "/Administracion",
+        name: "Administracion",
+
+        component: () =>
+            import ("../views/Administracion.vue"),
+    },
 ];
 
 const router = new VueRouter({

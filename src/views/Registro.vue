@@ -19,24 +19,29 @@
                   label="Nombre"
                   prepend-icon="mdi-account"
                   type="text"
+                  :rules="[rules.required, rules.counter]"
+
                 />
               <v-text-field
                   v-model="apellidos"
                   label="Apellidos"
                   prepend-icon="mdi-account"
                   type="text"
+                  :rules="[rules.required, rules.counter]"
                 />
                <v-text-field
                   v-model="DNI"
                   label="DNI"
                   prepend-icon="mdi-card-bulleted-outline"
                   type="text"
+                  :rules="[rules.required, rules.counter]"
                 />
                 <v-text-field
                   v-model="name"
                   label="Usuario"
                   prepend-icon="mdi-account-circle"
                   type="text"
+                  :rules="[rules.required, rules.counter]"
                 />
                 <v-text-field
                   v-model="password"
@@ -45,6 +50,7 @@
                   prepend-icon="mdi-lock"
                   :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                   @click:append="showPassword = !showPassword"
+                  :rules="[rules.required, rules.counter]"
                 />
                 
               </v-form>
@@ -87,6 +93,14 @@ export default {
       nombre: "",
       apellidos: "",
       DNI: "",
+      rules: {
+          required: value => !!value || 'Required.',
+          counter: value => value.length <= 20 || 'Max 20 characters',
+          email: value => {
+            const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            return pattern.test(value) || 'Invalid e-mail.'
+          },
+        },
     };
   },
   methods: {

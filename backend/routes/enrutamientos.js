@@ -19,23 +19,21 @@ usuarioActivo = ""; //variable de clase que mantiene la sesion del ususario que 
 
 
 
-router.post('/login', async (request, response) =>{
+router.post('/login', async(request, response) => {
 
     usr = request.body.user;
     contr = request.body.password;
-    
-    const soc = await socios.find(
-        {usuario: usr, contrasenya: contr}
-    );
+
+    const soc = await socios.find({ usuario: usr, contrasenya: contr });
 
 
-    if(soc == ""){
+    if (soc == "") {
         //No está en la base de datos
         response.send("NO");
-    }else{
+    } else {
         //Si está en la base de datos
         usuarioActivo = soc[0].DNI
-   
+
         console.log(usuarioActivo)
         response.send("SI");
     }
@@ -44,7 +42,7 @@ router.post('/login', async (request, response) =>{
 });
 
 
-router.post('/registro', async (request, response) =>{
+router.post('/registro', async(request, response) => {
 
 
     console.log(request.body)
@@ -55,8 +53,7 @@ router.post('/registro', async (request, response) =>{
 
 });
 
-router.get('/Colecciones', async (request, response)=>{
-console.log("frito "+usuarioActivo)
+router.get('/Colecciones', async(request, response) => {
     const todasColecciones = await colecciones.find();
     console.log(todasColecciones)
     response.json(todasColecciones);
@@ -66,29 +63,65 @@ console.log("frito "+usuarioActivo)
 
 
 
-router.get('/Preguntas', (request, response)=>{
+router.get('/Preguntas', (request, response) => {
 
     //Numero aleatorio de 0 a 51 incluidos:
     indice = Math.floor(Math.random() * 52);
-    indice = indice+1
+    indice = indice + 1
 
     archivoPreguntas = fs.readFileSync('ganarPuntos/preguntas.json');
     preguntas = JSON.parse(archivoPreguntas);
     //console.log(preguntas['Pregunta'+indice]);
     response.setHeader('Content-Type', 'application/json');
-    response.end(JSON.stringify(preguntas['Pregunta'+indice]));
+    response.end(JSON.stringify(preguntas['Pregunta' + indice]));
 
 
 });
 
 
-router.get('/Preguntas/:puntosAcumulados', async (request, response)=>{
+router.get('/Preguntas/:puntosAcumulados', async(request, response) => {
 
-    await socios.findOneAndUpdate(
-        { "DNI" : usuarioActivo },
-        { $inc: { "saldoPuntos" : request.params.puntosAcumulados} });
+    await socios.findOneAndUpdate({ "DNI": usuarioActivo }, { $inc: { "saldoPuntos": request.params.puntosAcumulados } });
 
 });
+
+
+
+
+router.get('/Juego1/:puntosAcumulados', async(request, response) => {
+    console.log("entrasdasda")
+    await socios.findOneAndUpdate({ "DNI": usuarioActivo }, { $inc: { "saldoPuntos": request.params.puntosAcumulados } });
+
+});
+//este metodo tiene que estar el ultimo
+router.get('/traerPuntos', async(request, response) => {
+
+    console.log(usuarioActivo)
+    const soc = await socios.find({ DNI: usuarioActivo });
+
+    response.send(JSON.stringify(soc[0].saldoPuntos))
+
+});
+
+
+router.post('/Administracion/Anyadir', async (request, response) =>{
+
+    const nuevaColeccion = new colecciones(request.body);
+    await nuevaColeccion.save();
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -157,8 +190,8 @@ console.log("METIENDO COLECCION")
 
 
 /*Al pedir el directorio raíz QUE ASUMIMOS DENTRO DE /baseDatos se hace una consulta de todo lo guardado en la BD*/
-router.get('/', async (request, response) =>{
-    
+router.get('/', async(request, response) => {
+
     const resultadoConsulta = await socios.find(); //un SELECT *
     //El async await obecede a que es asincrono y cuando termine por su cuenta lo grabe en la constante
 
@@ -175,14 +208,14 @@ router.get('/', async (request, response) =>{
 /*Para que el navegador me pueda traer datos al servidor, usamos post
 Método que permite recibir e INSERTAR un objeto del tipo definido en models a la BD*/
 
-router.post('/', async (request, response) =>{
+router.post('/', async(request, response) => {
 
     //la consulta aqui será insertar datos. Los datos vienen en el cuerpo al ser un post
     //creamos una nueva instancia, como en hibernate los objetos que luego van a la base de datos
     const socio = new socios(request.body);
-    
+
     //console.log(request.body);
-    
+
     //console.log(new baseDatos());
 
     console.log(socio);
@@ -205,8 +238,8 @@ router.post('/', async (request, response) =>{
 /*ACTUALIZAR EN LA BASE DE DATOS - Método put
 En la URL indico que objeto quiero actualizar por ejemplo*/
 
-router.put('/:id', async (request, response) =>{
-    
+router.put('/:id', async(request, response) => {
+
     //busca por ID (id del objeto que es params que es lo que viene en la URL) que le llega en la base de datos y actualiza con los nuevos datos que traemos (en el cuerpo de la peticion put)
     await socios.findByIdAndUpdate(request.params.id, request.body);
 
@@ -223,7 +256,7 @@ router.put('/:id', async (request, response) =>{
 
 
 
-router.delete('/:id', async (request, response) =>{
+router.delete('/:id', async(request, response) => {
 
     //con el id que nos llegue, se lo pasamos a la funcion, busca por ID en la base de datos y lo elimina
     await socios.findByIdAndRemove(request.params.id);
@@ -250,6 +283,3 @@ router.delete('/:id', async (request, response) =>{
 
 //lo exportamos para llamarlo desde fuera
 module.exports = router;
-
-
-

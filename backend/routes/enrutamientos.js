@@ -104,6 +104,26 @@ router.get('/traerPuntos', async(request, response) => {
 });
 
 
+router.post('/Administracion/Anyadir', async (request, response) =>{
+
+    const nuevaColeccion = new colecciones(request.body);
+    await nuevaColeccion.save();
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 

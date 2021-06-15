@@ -81,7 +81,9 @@ export default {
       if (item.quedan >= 1) {
         item.quedan = item.quedan - 1;
         var xhttp = new XMLHttpRequest();
-        var url = "http://localhost:5000/baseDatos/Compra" +"/"+ item._id;
+        console.log(item._id)
+        console.log(item.nombre)
+        var url = "http://localhost:5000/baseDatos/Compra" +"/"+ item.nombre;
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
             if(this.responseText == "ERROR_EJEMPLAR_ADQUIRIDO"){
@@ -90,7 +92,7 @@ export default {
           }
         };
 
-        xhttp.open("POST", url, true);
+        xhttp.open("POST", url, false);
         xhttp.setRequestHeader("Access-Control-Allow-Headers", "*");
         xhttp.setRequestHeader(
           "Content-type",
@@ -121,7 +123,7 @@ export default {
           }
         };
 
-        xhttp.open("POST", url, true);
+        xhttp.open("POST", url, false);
         xhttp.setRequestHeader("Access-Control-Allow-Headers", "*");
         xhttp.setRequestHeader(
           "Content-type",

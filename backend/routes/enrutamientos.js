@@ -52,6 +52,7 @@ router.post('/registro', async(request, response) => {
 
     await socio.save();
 
+    response.send("Registro Exitoso")
 
 });
 
@@ -121,7 +122,7 @@ router.get('/traerUsrLoggeado', async(request, response) => {
 });
 
 
-router.post('/Compra/:idCartaComprada', async(request, response) => {
+router.post('/Compra/:nombreCartaComprada', async(request, response) => {
 
    var carta = {}
 console.log("1.");
@@ -137,11 +138,13 @@ console.log("3.");
     for(j=0; j<socio[0].colecciones.length; j++){
 
         if(socio[0].colecciones[j].nombre == request.body.nombre){
+            console.log("4.");
 
 
             for(i = 0; i< request.body.cartas.length; i++){
                 //hemos encontrado la carta comprada en la coleccion alctualizada que viene
-             if(request.body.cartas[i]._id == request.params.idCartaComprada){
+             if(request.body.cartas[i].nombre == request.params.nombreCartaComprada){
+                console.log("5.");
 
                 carta = request.body.cartas[i]
                 console.log(carta)
@@ -150,7 +153,7 @@ console.log("3.");
 
             }
 
-
+/*
 
             //recorremos las colecciones del socio para ver si ya tiene un ejemplar igual
             for(k=0; k<socio[0].colecciones.length; k++){
@@ -158,21 +161,24 @@ console.log("3.");
                 for(l=0; l<socio[0].colecciones[k].cartas.length; l++){
 
                     if(carta.nombre == socio[0].colecciones[k].cartas[l].nombre){
+                        console.log("6.");
+
                         //hay ya una carta con el mismo nombre en la base de datos 
                             response.send("ERROR_EJEMPLAR_ADQUIRIDO")
-                            return
+                            
                     }
 
                 }
 
             }
 
-
+*/
 
 
             //Grabo la nueva carta al socio
 
             socioAActualizar.colecciones[j].cartas.push(carta)
+            console.log("7.");
 
             break
         }
@@ -192,7 +198,7 @@ console.log("3.");
 
         for(i = 0; i< request.body.cartas.length; i++){
                 //hemos encontrado la carta comprada en la coleccion alctualizada que viene
-             if(request.body.cartas[i]._id == request.params.idCartaComprada){
+             if(request.body.cartas[i].nombre == request.params.nombreCartaComprada){
 
                 carta = request.body.cartas[i]
                 break
@@ -217,18 +223,21 @@ console.log("3.");
  //Descontar los puntos
 
  socioAActualizar.saldoPuntos = socioAActualizar.saldoPuntos - carta.precio
+ console.log("8.");
 
 
 await socios.findByIdAndUpdate({ _id: socioAActualizar._id}, socioAActualizar);
 
+console.log("9.")
+response.send("Carta comprada con éxito");
 
 
 });
 
 router.post('/CompraAlbum/:nombreColeccion', async(request, response) => {
-
+console.log("1.")
     var soc = await socios.find({ DNI: usuarioActivo});
-
+console.log("2.")
     var socioAActualizar = soc[0];
 
      //no existe la colección
@@ -237,12 +246,12 @@ router.post('/CompraAlbum/:nombreColeccion', async(request, response) => {
         album: {},
         cartas: [],
     }
-
+console.log("3.")
     nuevaColeccion.nombre = request.params.nombreColeccion;
     nuevaColeccion.album = request.body;
 
     socioAActualizar.colecciones.push(nuevaColeccion);
-
+    console.log("4.")
 /*
     for(i = 0 ; i < socioAActualizar.colecciones.length; i++){
        
@@ -265,10 +274,11 @@ router.post('/CompraAlbum/:nombreColeccion', async(request, response) => {
 
  socioAActualizar.saldoPuntos = socioAActualizar.saldoPuntos - request.body.precio
 
-
+ console.log("5.")
  await socios.findByIdAndUpdate({ _id: socioAActualizar._id}, socioAActualizar);
 
-
+ console.log("6.")
+ response.send("Album comprado con éxito");
 
 });
 

@@ -58,41 +58,7 @@ export default {
         console.log(this.albumes);
         this.loaded = true;
       }
-      /*
-      console.log("pedido");
-      var xhttp = new XMLHttpRequest();
-      var url = "http://localhost:5000/baseDatos/Colecciones";
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          //this.computed.mostrarColecciones(JSON.parse(this.responseText))
-          this.albumes = JSON.parse(this.responseText);
-
-          this.loaded = true;
-          console.log("loaded cambiado");
-          console.log(this.albumes, "los albumes");
-
-          console.log(this.responseText)
-          
-          });
-
-          document.getElementById("tituloc1").innerHTML = JSON.parse(
-            this.responseText
-          )[0].nombre;
-          document.getElementById("col1").src = JSON.parse(
-            this.responseText
-          )[0].album.imagen;
- 
-          document.getElementById("tituloc2").innerHTML = JSON.parse(
-            this.responseText
-          )[1].nombre;
-          document.getElementById("col2").src = JSON.parse(
-            this.responseText
-          )[1].album.imagen;
-        }
-      };
-      xhttp.open("GET", url, false);
-      xhttp.send();
-    */
+      
     },
     setCurrentColeccion: function(a) {
       this.$store.dispatch("setCurrentColeccionAction", a);

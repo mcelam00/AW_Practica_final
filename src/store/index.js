@@ -14,6 +14,10 @@ export default new Vuex.Store({
       state.logueado = !state.logueado;
       console.log("Estado logueado", state.logueado);
     },
+    setStateLogueado(state, data) {
+      state.logueado = data;
+      console.log("Estado logueado", state.logueado);
+    },
     setCurrentColeccion(state, data) {
       state.currentColeccion = data;
       console.log("current coleccion", state.currentColeccion);
@@ -31,6 +35,9 @@ export default new Vuex.Store({
     //llamamos con el dispatch
     changeStateLogueadoAction(context) {
       context.commit("changeStateLogueado");
+    },
+    setStateLogueadoAction(context, data) {
+      context.commit("setStateLogueado", data);
     },
     setCurrentColeccionAction(context, data) {
       context.commit("setCurrentColeccion", data); //a mutations

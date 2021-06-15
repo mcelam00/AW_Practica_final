@@ -40,6 +40,7 @@ export default {
     //this.cargarPuntos();
     this.cargarSocio();
     this.separar();
+    this.$store.dispatch("setStateLogueadoAction", true);
   },
 
   data: () => ({

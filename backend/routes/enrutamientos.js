@@ -283,6 +283,11 @@ console.log("3.")
 });
 
 
+router.post('/Administracion/sumaExistencias', async (request, response) =>{
+    await colecciones.findByIdAndUpdate({_id: request.body._id}, request.body);
+    response.send("Existencia incrementada")
+});
+
 
 
 

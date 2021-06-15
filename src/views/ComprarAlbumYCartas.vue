@@ -63,6 +63,7 @@
 
 <script>
 import store from "../store";
+var puntos = 0;
 
 export default {
   name: "ComprarAlbumYCartas",
@@ -86,19 +87,22 @@ export default {
       var url = "http://localhost:5000/baseDatos/traerPuntos";
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          return this.responseText;
+          console.log(this.responseText)
+          puntos = this.responseText;
+
         }
       };
-      xhttp.open("GET", url, true);
+      xhttp.open("GET", url, false);
       xhttp.send();
     },
 
     comprar: function(item) {
       console.log(item);
-
+      console.log(puntos)
+      this.cargarPuntos();
+      console.log(puntos)
       //Comprobar que el usuario tiene puntos
-
-      if (this.cargarPuntos() >= item.precio) {
+      if (puntos >= item.precio) {
         //Descontar existencia al kiosco
         if (item.quedan >= 1) {
           item.quedan = item.quedan - 1;

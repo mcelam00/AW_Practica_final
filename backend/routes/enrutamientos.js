@@ -110,6 +110,7 @@ router.post('/Administracion/Anyadir', async (request, response) =>{
 
     const nuevaColeccion = new colecciones(request.body);
     await nuevaColeccion.save();
+    response.send("Añadida nueva Colección")
 
 });
 

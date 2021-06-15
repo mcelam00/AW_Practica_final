@@ -1,0 +1,125 @@
+[{
+  "_id": {
+    "$oid": "60c773dd02716d9677dc9859"
+  },
+  "colecciones": [],
+  "usuario": "admin",
+  "contrasenya": "admin",
+  "nombre": "Roberto",
+  "apellidos": "Gonzalez",
+  "DNI": "00000000K",
+  "saldoPuntos": 20,
+  "esAdmin": true
+},{
+  "_id": {
+    "$oid": "60c874bcc852c92410f15911"
+  },
+  "colecciones": [
+    {
+      "nombre": "Colección Fuego",
+      "album": {
+        "nombre": "Album Pokémon tipo Fuego",
+        "imagen": "https://images-na.ssl-images-amazon.com/images/I/81Q7vXrh6LL._AC_SL1500_.jpg",
+        "precio": 3
+      },
+      "cartas": [
+        {
+          "_id": "60c7e67d3650a9441c65777f",
+          "nombre": "Reshiram",
+          "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW04.png",
+          "precio": 2,
+          "quedan": 4
+        },
+        {
+          "_id": "60c7e67d3650a9441c657783",
+          "nombre": "Flareon",
+          "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW88.png",
+          "precio": 2,
+          "quedan": 4
+        }
+      ]
+    },
+    {
+      "nombre": " Colección Agua",
+      "album": {
+        "nombre": "Album Pokémon tipo Agua",
+        "imagen": "https://images-na.ssl-images-amazon.com/images/I/91sx24Dup3L._AC_SL1500_.jpg",
+        "precio": 3
+      },
+      "cartas": [
+        {
+          "_id": "60c7c9d1018f002bc07baf46",
+          "nombre": "Empoleon",
+          "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW56.png",
+          "precio": 2,
+          "quedan": 3
+        },
+        {
+          "_id": "60c7c9d1018f002bc07baf48",
+          "nombre": "Keldeo",
+          "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW60.png",
+          "precio": 2,
+          "quedan": 4
+        },
+        {
+          "_id": "60c7c9d1018f002bc07baf48",
+          "nombre": "Keldeo",
+          "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW60.png",
+          "precio": 2,
+          "quedan": 3
+        }
+      ]
+    },
+    {
+      "nombre": "Colección Planta",
+      "album": {
+        "nombre": "Album Pokémon tipo Planta",
+        "imagen": "https://images-na.ssl-images-amazon.com/images/I/91MJcZ2oZ3L._AC_SL1500_.jpg",
+        "precio": 3
+      },
+      "cartas": [
+        {
+          "nombre": "Snivy",
+          "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW01.png",
+          "precio": 2,
+          "quedan": 4
+        },
+        {
+          "_id": "60c8806a2e0001069061108b",
+          "nombre": "Rillaboom",
+          "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/SWSHP/SWSHP_ES_SWSH006.png",
+          "precio": 2,
+          "quedan": 4
+        },
+        {
+          "_id": "60c8806a2e00010690611086",
+          "nombre": "Virizion",
+          "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW70.png",
+          "precio": 2,
+          "quedan": 4
+        }
+      ]
+    }
+  ],
+  "usuario": "usuario1",
+  "contrasenya": "usuario1",
+  "nombre": "Juan",
+  "apellidos": "López",
+  "DNI": "1234567y",
+  "saldoPuntos": 40,
+  "esAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60c773dd02716d9677dc9960"
+  },
+  "colecciones": [],
+  "usuario": "blas",
+  "contrasenya": "1234",
+  "nombre": "Blas",
+  "apellidos": "Gonzalez",
+  "DNI": "00000000K",
+  "saldoPuntos": 70,
+  "esAdmin": false
+}
+]

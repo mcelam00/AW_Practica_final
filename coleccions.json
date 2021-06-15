@@ -1,0 +1,217 @@
+[{
+  "_id": {
+    "$oid": "60c5f740730d3b2131e20a00"
+  },
+  "nombre": "Colección Fuego",
+  "cartas": [
+    {
+      "nombre": "Tepig",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW02.png",
+      "precio": 2,
+      "quedan": 5
+    },
+    {
+      "nombre": "Reshiram",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW04.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Darumaka",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW18.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Emboar",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW21.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Victini",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW32.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Flareon",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW88.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Ninetales",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW66.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Litten",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/SMP/SMP_ES_SM23.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Turtonator",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/SMP/SMP_ES_SM27.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Charizard",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/SMP/SMP_ES_SM158.png",
+      "precio": "2",
+      "quedan": "5"
+    }
+  ],
+  "album": {
+    "nombre": "Album Pokémon tipo Fuego",
+    "imagen": "https://images-na.ssl-images-amazon.com/images/I/81Q7vXrh6LL._AC_SL1500_.jpg",
+    "precio": 3
+  }
+},{
+  "_id": {
+    "$oid": "60c5fa9a730d3b2131e20a02"
+  },
+  "nombre": " Colección Agua",
+  "cartas": [
+    {
+      "nombre": "Kyurem",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW37.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Samurott",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW22.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Ducklett",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW17.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Empoleon",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW56.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Vaporeon",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW89.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Keldeo",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW60.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Bruxish",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/SMP/SMP_ES_SM11.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Glaceon",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW90.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Kyogre",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/SMP/SMP_ES_SM129.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Popplio",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/SMP/SMP_ES_SM24.png",
+      "precio": "2",
+      "quedan": "5"
+    }
+  ],
+  "album": {
+    "nombre": "Album Pokémon tipo Agua",
+    "imagen": "https://images-na.ssl-images-amazon.com/images/I/91sx24Dup3L._AC_SL1500_.jpg",
+    "precio": 3
+  }
+},{
+  "_id": {
+    "$oid": "60c5fb2d730d3b2131e20a03"
+  },
+  "nombre": "Colección Planta",
+  "cartas": [
+    {
+      "nombre": "Snivy",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW01.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Pansage",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW11.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Serperior",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW20.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Lilligant",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW49.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Virizion",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW70.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Leafeon",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW87.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Genesect",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/BWP/BWP_ES_BW99.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Rowlet",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/SMP/SMP_ES_SM22.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Golisopod",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/SMP/SMP_ES_SM52.png",
+      "precio": "2",
+      "quedan": "5"
+    },
+    {
+      "nombre": "Rillaboom",
+      "imagen": "https://assets.pokemon.com/assets/cms2-es-es/img/cards/web/SWSHP/SWSHP_ES_SWSH006.png",
+      "precio": "2",
+      "quedan": "5"
+    }
+  ],
+  "album": {
+    "nombre": "Album Pokémon tipo Planta",
+    "imagen": "https://images-na.ssl-images-amazon.com/images/I/91MJcZ2oZ3L._AC_SL1500_.jpg",
+    "precio": 3
+  }
+}]

@@ -2,19 +2,31 @@
   <v-main>
     <v-navigation-drawer v-model="drawer" app>
       <!--  -->
-<!---->
+      <!---->
       <div v-if="$store.getters.logueado">
         <v-card flat class="mx-4 justify-center">
           <v-avatar size="120">
             <v-img src="https://thispersondoesnotexist.com/image"></v-img>
           </v-avatar>
 
-          <v-card-title> {{$store.getters.currentUser.nombre}} </v-card-title>
+          <v-card-title> {{ $store.getters.currentUser.nombre }} </v-card-title>
 
-          <v-card-subtitle> {{$store.getters.currentUser.apellidos}}</v-card-subtitle>
+          <v-card-subtitle>
+            {{ $store.getters.currentUser.apellidos }}</v-card-subtitle
+          >
           <v-btn class="mb-4" color="primary" router to="/MiPerfil">
             <span>Mi perfil</span>
             <v-icon right>mdi-account-circle</v-icon>
+          </v-btn>
+          <v-btn
+            v-if="$store.getters.currentUser.esAdmin"
+            class="mb-4"
+            color="primary"
+            router
+            to="/Administracion"
+          >
+            <span>Administrar</span>
+            <v-icon right>mdi-book-edit</v-icon>
           </v-btn>
         </v-card>
         <v-divider></v-divider>
@@ -64,7 +76,6 @@
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title> <h2>Kiosco de Pokimons</h2> </v-toolbar-title>
-      <h2>{{ $store.getters.logueado }}</h2>
       <v-btn
         v-if="$store.getters.logueado"
         color="primary"

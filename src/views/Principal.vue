@@ -18,7 +18,7 @@
                 text
                 @click="setCurrentColeccion(album)"
               >
-                comprar
+                Ver album
               </v-btn>
 
               <v-spacer></v-spacer>

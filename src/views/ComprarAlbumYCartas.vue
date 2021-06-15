@@ -10,7 +10,17 @@
       <v-card-subtitle> Precio: {{ this.album.precio }} puntos</v-card-subtitle>
 
       <v-card-actions>
-        <v-btn color="orange" text absolute right class="mb-8" @click="comprarAlbum(album)"> comprar </v-btn>
+        <v-btn
+          v-if="$store.getters.logueado"
+          color="orange"
+          text
+          absolute
+          right
+          class="mb-8"
+          @click="comprarAlbum(album)"
+        >
+          comprar
+        </v-btn>
 
         <v-spacer></v-spacer>
       </v-card-actions>
@@ -32,6 +42,7 @@
 
           <v-card-actions>
             <v-btn
+              v-if="$store.getters.logueado"
               color="orange"
               text
               absolute
@@ -70,70 +81,76 @@ export default {
   }),
 
   methods: {
+    cargarPuntos: function() {
+      var xhttp = new XMLHttpRequest();
+      var url = "http://localhost:5000/baseDatos/traerPuntos";
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          return this.responseText;
+        }
+      };
+      xhttp.open("GET", url, true);
+      xhttp.send();
+    },
+
     comprar: function(item) {
       console.log(item);
 
-      //Descontar puntos al usuario
+      //Comprobar que el usuario tiene puntos
 
-
-
-      //Descontar existencia al kiosco
-      if (item.quedan >= 1) {
-        item.quedan = item.quedan - 1;
-        var xhttp = new XMLHttpRequest();
-        console.log(item._id)
-        console.log(item.nombre)
-        var url = "http://localhost:5000/baseDatos/Compra" +"/"+ item.nombre;
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            if(this.responseText == "ERROR_EJEMPLAR_ADQUIRIDO"){
-              alert("Ya dispone de esa carta en su album");
+      if (this.cargarPuntos() >= item.precio) {
+        //Descontar existencia al kiosco
+        if (item.quedan >= 1) {
+          item.quedan = item.quedan - 1;
+          var xhttp = new XMLHttpRequest();
+          console.log(item._id);
+          console.log(item.nombre);
+          var url =
+            "http://localhost:5000/baseDatos/Compra" + "/" + item.nombre;
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              if (this.responseText == "ERROR_EJEMPLAR_ADQUIRIDO") {
+                alert("Ya dispone de esa carta en su album");
+              }
             }
-          }
-        };
+          };
 
-        xhttp.open("POST", url, false);
-        xhttp.setRequestHeader("Access-Control-Allow-Headers", "*");
-        xhttp.setRequestHeader(
-          "Content-type",
-          "application/json; charset=utf-8"
+          xhttp.open("POST", url, false);
+          xhttp.setRequestHeader("Access-Control-Allow-Headers", "*");
+          xhttp.setRequestHeader(
+            "Content-type",
+            "application/json; charset=utf-8"
+          );
+          xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+
+          xhttp.send(JSON.stringify(this.albumYCartas));
+        } else {
+          alert("No quedan cartas, solo maxibon");
+        }
+      } else {
+        alert(
+          "No te quedan suficientes puntos\nPuedes conseguir puntos respondiendo preguntas"
         );
-        xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
-
-        xhttp.send(JSON.stringify(this.albumYCartas));
       }
-      else{
-        alert("No quedan cartas, solo maxibon");
-      }
-
-      //this.albumYCartas.cartas.quedan = this.albumYCartas.cartas.quedan -1;
-      //actualizar la base
-
-      //Mandar el nombre de la carta
-
-      //this.$store.dispatch("updateCollectionAction", this.albumYCartas);
     },
-    comprarAlbum: function(album){
+    comprarAlbum: function(album) {
+      var xhttp = new XMLHttpRequest();
+      var url =
+        "http://localhost:5000/baseDatos/CompraAlbum" +
+        "/" +
+        this.albumYCartas.nombre;
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          console.log(this.responseText);
+        }
+      };
 
-        var xhttp = new XMLHttpRequest();
-        var url = "http://localhost:5000/baseDatos/CompraAlbum"+"/"+this.albumYCartas.nombre;
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
-          }
-        };
+      xhttp.open("POST", url, false);
+      xhttp.setRequestHeader("Access-Control-Allow-Headers", "*");
+      xhttp.setRequestHeader("Content-type", "application/json; charset=utf-8");
+      xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
 
-        xhttp.open("POST", url, false);
-        xhttp.setRequestHeader("Access-Control-Allow-Headers", "*");
-        xhttp.setRequestHeader(
-          "Content-type",
-          "application/json; charset=utf-8"
-        );
-        xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
-
-        xhttp.send(JSON.stringify(album));
-
-
+      xhttp.send(JSON.stringify(album));
     },
   },
 

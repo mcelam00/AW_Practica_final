@@ -173,6 +173,19 @@
 
     <v-card class="mx-auto" max-width="1000">
       <v-card-title> COLECCIONES ACTUALES </v-card-title>
+      <v-btn
+        absolute
+        right
+        class="mr-7 "
+        fab
+        color="secondary"
+        small
+        @click="traerColecciones()"
+      >
+        <v-icon>
+          mdi-reload
+        </v-icon>
+      </v-btn>
 
       <v-list>
         <v-list-item-group color="primary">
@@ -186,13 +199,18 @@
                   <v-card-subtitle
                     class="title font-weight-light spacing-playground ml-16"
                   >
-                    {{cromo.nombre+" --> "+"Existencias: "+cromo.quedan}}
+                    {{
+                      cromo.nombre + " --> " + "Existencias: " + cromo.quedan
+                    }}
                     <v-btn
                       absolute
                       right
                       color="secondary"
                       elevation="6"
-                      @click="cromo.quedan = cromo.quedan+1;actualizarExistencia(col);"
+                      @click="
+                        cromo.quedan = cromo.quedan + 1;
+                        actualizarExistencia(col);
+                      "
                       >+</v-btn
                     >
                   </v-card-subtitle>
@@ -205,14 +223,6 @@
     </v-card>
   </v-container>
 </template>
-
-
-
-
-
-
-
-
 
 <script>
 var cromosAniadidos = 0;
@@ -244,9 +254,10 @@ export default {
   },
 
   methods: {
-    actualizarExistencia: function(col){
-       var xhttp = new XMLHttpRequest();
-      var url ="http://localhost:5000/baseDatos/Administracion/sumaExistencias";
+    actualizarExistencia: function(col) {
+      var xhttp = new XMLHttpRequest();
+      var url =
+        "http://localhost:5000/baseDatos/Administracion/sumaExistencias";
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           console.log(this.responseText);
@@ -259,10 +270,8 @@ export default {
       xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
 
       xhttp.send(JSON.stringify(col)); //enviamos la coleccion con la existencia actualizada
-
-
     },
-    nuevoCromo: function () {
+    nuevoCromo: function() {
       //añadimos el cromo metido por la interfaz al array de cromos
       cromos.push({
         nombre: this.nombreCromo,
@@ -277,7 +286,7 @@ export default {
       //limpio campos
     },
 
-    guardarColeccion: function () {
+    guardarColeccion: function() {
       this.nuevaColeccion = {
         nombre: this.nombreColeccion,
         album: {
@@ -294,12 +303,12 @@ export default {
       this.enviarColeccionBaseDatos(this.nuevaColeccion);
     },
 
-    enviarColeccionBaseDatos: function (coleccion) {
+    enviarColeccionBaseDatos: function(coleccion) {
       //peticion post
       var xhttp = new XMLHttpRequest();
       var url = "http://localhost:5000/baseDatos/Administracion/Anyadir";
 
-      xhttp.onreadystatechange = function () {
+      xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           console.log(this.responseText);
         }
@@ -313,7 +322,7 @@ export default {
       xhttp.send(JSON.stringify(coleccion));
     },
 
-    traerColecciones: function () {
+    traerColecciones: function() {
       var request = new XMLHttpRequest();
       request.open("GET", "http://localhost:5000/baseDatos/Colecciones", false); // `false` makes the request synchronous
       request.send(null);
@@ -321,7 +330,7 @@ export default {
       if (request.status === 200) {
         this.todasColecciones = JSON.parse(request.responseText);
         console.log("colecciones", this.todasColecciones);
-      }/*else if(request.status === 304){
+      } /*else if(request.status === 304){
           request.send(null);
       }*/
     },
